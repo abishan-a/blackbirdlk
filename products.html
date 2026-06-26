@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="onyx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Bird</title>
+    <link rel="icon" type="image/png" href="product_img/fav.png">
+    <meta name="description" content="Browse all products available at Black Bird. Quality fashion, electronics, and accessories.">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Apply theme immediately to prevent FOUT
+        const savedTheme = localStorage.getItem('bb-theme') || 'rose';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <span>📦 Free delivery on orders above Rs 2,500 &nbsp;|&nbsp; 🏠 Vavuniya Only &nbsp;|&nbsp; 💵 Cash on Delivery</span>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="nav-container">
+             <a href="index.html" class="logo">
+                <img src="product_img/favicon.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
+                <span>Black<strong>Bird</strong></span>
+             </a>
+
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search products…" autocomplete="off">
+                <button class="search-btn" id="search-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+
+            <div class="header-actions">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html" style="color:var(--accent);">Products</a></li>
+                    </ul>
+                </nav>
+                <!-- Theme Toggle Switch -->
+                <button class="theme-toggle-switch" id="theme-toggle" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+                    <span class="toggle-track">
+                        <span class="toggle-thumb">
+                            <!-- Sun (Light) -->
+                            <svg class="toggle-icon-svg sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <!-- Moon (Dark) -->
+                            <svg class="toggle-icon-svg moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </span>
+                    </span>
+                </button>
+
+                <div class="cart-icon" id="cart-icon" title="Open Cart">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-panel">
+             <div class="mobile-nav-logo">
+                 <img src="product_img/fav.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
+                 Black<strong>Bird</strong>
+             </div>
+            <a href="index.html" class="mobile-nav-link"><span>🏠</span> Home</a>
+            <a href="products.html" class="mobile-nav-link active-link"><span>🛍️</span> All Products</a>
+        </div>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="products-page-hero">
+        <h1>All Products</h1>
+        <p>Exclusively available for delivery in Vavuniya · Cash on Delivery</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="products-page-main">
+
+        <!-- Toolbar -->
+        <div class="products-toolbar">
+            <div class="products-count" id="products-count">
+                Showing <strong id="count-num">0</strong> products
+            </div>
+            <div class="filter-row">
+                <div class="filter-pills" id="filter-pills">
+                    <button class="pill active" data-filter="All">All</button>
+                    <button class="pill" data-filter="Fashion">Fashion</button>
+                    <button class="pill" data-filter="Electronics">Electronics</button>
+                    <button class="pill" data-filter="Decor">Decor</button>
+                </div>
+                <div class="sort-select-wrap">
+                    <select id="sort-select">
+                        <option value="default">Sort: Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- No Results -->
+        <div id="no-results" class="no-results" style="display:none;">
+            <p>😕 No products found. Try a different search or category.</p>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="product-grid"></div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="section-wrap footer-inner">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="product_img/fav.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
+                    <span>Black<strong>Bird</strong></span>
+                </div>
+                <p>Quality fashion, electronics, and accessories. 100% Cash on Delivery across Vavuniya.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="section-wrap">
+                <p>© 2026 Black Bird. All rights reserved. &nbsp;|&nbsp; Vavuniya, Northern Province, Sri Lanka.</p>
+                <p style="margin-top: 0.5rem;">No return is available.</p>
+                <p style="margin-top: 0.5rem;">Developed By Abishan A</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart-panel" id="cart-panel">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button class="close-cart" id="close-cart" aria-label="Close Cart">×</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+                <div class="delivery-note"><span>📦</span> Free delivery on orders over Rs 2,500</div>
+                <div class="cart-total-row">
+                    <span>Subtotal</span>
+                    <span id="cart-total-price">Rs 0</span>
+                </div>
+                <button class="checkout-btn" id="checkout-btn">Proceed to Checkout →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="cancel-checkout">×</button>
+            <div class="modal-header">
+                <h2>Complete Your Order</h2>
+                <p>Delivering to <strong>Vavuniya</strong> only. Cash on Delivery.</p>
+            </div>
+
+            <div class="checkout-steps">
+                <div class="step active" id="step1-indicator"><span>1</span> Details</div>
+                <div class="step-line"></div>
+                <div class="step" id="step2-indicator"><span>2</span> Review</div>
+            </div>
+
+            <!-- Step 1 -->
+            <div id="step-1" class="checkout-step">
+                <form id="checkout-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="c-name">Full Name *</label>
+                            <input type="text" id="c-name" placeholder="e.g. Arun Kumaran" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-phone">Phone Number *</label>
+                            <input type="tel" id="c-phone" placeholder="e.g. 077 123 4567" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="c-address">Street Address *</label>
+                        <input type="text" id="c-address" placeholder="House No., Street Name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="c-area">Area *</label>
+                            <select id="c-area" required>
+                                <option value="">Select area</option>
+                                <option>Vavuniya Town</option>
+                                <option>Nedunkeni</option>
+                                <option>Omanthai</option>
+                                <option>Puliyankulam</option>
+                                <option>Cheddikulam</option>
+                                <option>Iranamadu</option>
+                                <option>Kovilkulam</option>
+                                <option>Periyakulam</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>District</label>
+                            <input type="text" value="Vavuniya" readonly class="readonly-field">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="c-note">Delivery Note (Optional)</label>
+                        <textarea id="c-note" rows="2" placeholder="Any landmark or special instructions…"></textarea>
+                    </div>
+                    <div class="payment-method-block">
+                        <h3>Payment Method</h3>
+                        <div class="payment-option">
+                            <div class="payment-radio-circle checked"></div>
+                            <div class="payment-text">
+                                <strong>Cash on Delivery (COD)</strong>
+                                <span>Pay when you receive your package</span>
+                            </div>
+                            <span class="payment-badge">Only Option</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-next" id="btn-next">Review Order →</button>
+                </form>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="step-2" class="checkout-step" style="display:none;">
+                <div class="review-section">
+                    <h3>Delivery To</h3>
+                    <div class="review-address" id="review-address"></div>
+                </div>
+                <div class="review-section">
+                    <h3>Your Items</h3>
+                    <div class="review-items" id="review-items"></div>
+                </div>
+                <div class="review-total-row">
+                    <span>Total (COD)</span>
+                    <span id="review-total"></span>
+                </div>
+                <button class="btn-confirm" id="btn-confirm">✅ Confirm Order</button>
+                <button class="cancel-btn" id="btn-back">← Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="product-detail-modal" id="product-detail-modal">
+        <div class="pd-panel">
+            <button class="pd-close" id="pd-close-btn" aria-label="Close">×</button>
+            <div class="pd-body">
+                <div class="pd-image-side">
+                    <img id="pd-img" src="" alt="" class="pd-main-img" loading="lazy">
+                </div>
+                <div class="pd-info-side">
+                    <div class="pd-category" id="pd-category"></div>
+                    <h2 class="pd-name" id="pd-name"></h2>
+                    <div class="pd-rating">
+                        <span class="stars" id="pd-stars"></span>
+                        <span id="pd-rating-count"></span>
+                    </div>
+                    <div class="pd-price-row">
+                        <div class="pd-price" id="pd-price"></div>
+                        <div id="pd-free-delivery"></div>
+                    </div>
+                    <p class="pd-description" id="pd-description"></p>
+                    <div id="pd-sizes-wrap"></div>
+                    <ul class="pd-highlights" id="pd-highlights"></ul>
+                    <table class="pd-specs-table" id="pd-specs-table">
+                        <thead><tr><th colspan="2">Product Details</th></tr></thead>
+                        <tbody id="pd-specs-body"></tbody>
+                    </table>
+                    <div class="pd-actions">
+                        <button class="pd-add-cart-btn" id="pd-add-cart-btn" data-product-id="">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Products page: update count display after render
+        const origRender = window._renderHook;
+        const countEl = document.getElementById('count-num');
+        const observer = new MutationObserver(() => {
+            const visible = document.querySelectorAll('#product-grid .product-card').length;
+            if (countEl) countEl.textContent = visible;
+        });
+        const grid = document.getElementById('product-grid');
+        if (grid) observer.observe(grid, { childList: true });
+    </script>
+</body>
+</html>
