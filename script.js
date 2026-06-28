@@ -435,7 +435,7 @@ function init() {
     });
 
     // Filter pills (event delegation)
-    filterPillsEl.addEventListener('click', (e) => {
+    filterPillsEl?.addEventListener('click', (e) => {
         if (!e.target.matches('.pill')) return;
         document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
         e.target.classList.add('active');
@@ -457,14 +457,14 @@ function init() {
     });
 
     // Sort
-    sortSelect.addEventListener('change', (e) => {
+    sortSelect?.addEventListener('change', (e) => {
         currentSort = e.target.value;
         renderProducts();
     });
 
     // Search
     let searchTimeout;
-    searchInput.addEventListener('input', (e) => {
+    searchInput?.addEventListener('input', (e) => {
         clearTimeout(searchTimeout);
         searchTimeout = setTimeout(() => {
             searchQuery = e.target.value.trim().toLowerCase();
@@ -479,24 +479,24 @@ function init() {
     });
 
     // Checkout open
-    checkoutBtn.addEventListener('click', () => {
+    checkoutBtn?.addEventListener('click', () => {
         if (cart.length === 0) {
             showToast('🛒 Your cart is empty!');
             return;
         }
         cartOverlay.classList.remove('active');
         goToStep(1);
-        checkoutModal.classList.add('active');
+        checkoutModal?.classList.add('active');
     });
 
     // Close checkout modal
-    cancelCheckout.addEventListener('click', () => checkoutModal.classList.remove('active'));
-    checkoutModal.addEventListener('click', (e) => {
+    cancelCheckout?.addEventListener('click', () => checkoutModal?.classList.remove('active'));
+    checkoutModal?.addEventListener('click', (e) => {
         if (e.target === checkoutModal) checkoutModal.classList.remove('active');
     });
 
     // Step 1 → Step 2
-    checkoutForm.addEventListener('submit', (e) => {
+    checkoutForm?.addEventListener('submit', (e) => {
         e.preventDefault();
         if (!validateStep1()) return;
         buildReview();
@@ -504,25 +504,25 @@ function init() {
     });
 
     // Back to step 1
-    btnBack.addEventListener('click', () => goToStep(1));
+    btnBack?.addEventListener('click', () => goToStep(1));
 
     // Confirm Order
-    btnConfirm.addEventListener('click', () => placeOrder());
+    btnConfirm?.addEventListener('click', () => placeOrder());
 
     // ── Product Detail Modal ──
     const pdModal = document.getElementById('product-detail-modal');
-    document.getElementById('pd-close-btn').addEventListener('click', () => pdModal.classList.remove('active'));
-    pdModal.addEventListener('click', (e) => {
+    document.getElementById('pd-close-btn')?.addEventListener('click', () => pdModal?.classList.remove('active'));
+    pdModal?.addEventListener('click', (e) => {
         if (e.target === pdModal) pdModal.classList.remove('active');
     });
 
-    document.getElementById('pd-add-cart-btn').addEventListener('click', function() {
+    document.getElementById('pd-add-cart-btn')?.addEventListener('click', function() {
         const id = parseInt(this.dataset.productId);
         const activeSizeBtn = document.querySelector('#pd-sizes-wrap .size-btn.selected');
         const selectedSize = activeSizeBtn ? activeSizeBtn.textContent : null;
         addToCart(id, null, selectedSize);
-        pdModal.classList.remove('active');
-        cartOverlay.classList.add('active');
+        pdModal?.classList.remove('active');
+        cartOverlay?.classList.add('active');
     });
 
     // ── Hamburger / Mobile Nav ──
@@ -590,7 +590,12 @@ function renderProducts() {
 
     // Heading update (null-safe — doesn't exist on products page)
     const heading = document.getElementById('products-heading');
-    if (heading) heading.textContent = currentFilter === 'All' ? 'All Products' : currentFilter;
+    if (heading) heading.textContent = currentFilter === 'All' ? 'Featured Products' : currentFilter;
+
+    // Limit to 3 random products on index.html
+    if (!document.querySelector('.products-page-main')) {
+        list = list.sort(() => Math.random() - 0.5).slice(0, 3);
+    }
 
     // Products count (products page)
     const countEl = document.getElementById('count-num');

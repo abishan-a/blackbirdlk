@@ -2,7 +2,7 @@
 // Firebase API configuration
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAyDAv1zWPohgPMr5j_laYAQVP8SUN3Rhg",
+    apiKey: "process.env.FIREBASE_API_KEY", // Note: This requires a bundler to work in the browser
     authDomain: "blackbirdlk.firebaseapp.com",
     projectId: "blackbirdlk",
     storageBucket: "blackbirdlk.firebasestorage.app",
