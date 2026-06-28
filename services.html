@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Bird</title>
+    <title>Our Services | Black Bird</title>
     <link rel="icon" type="image/png" href="product_img/fav.png">
-    <meta name="description" content="Black Bird - Exclusive quality products, fashion, and accessories. Fast Cash on Delivery in Vavuniya.">
+    <meta name="description" content="Browse our services at Black Bird.">
     <link rel="stylesheet" href="styles.css">
     <script>
         // Apply theme immediately to prevent FOUT
@@ -26,13 +26,13 @@
     <!-- Header -->
     <header id="main-header">
         <div class="nav-container">
-            <div class="logo">
+             <a href="index.html" class="logo">
                 <img src="product_img/favicon.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
                 <span>Black<strong>Bird</strong></span>
-            </div>
+             </a>
 
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Search.." autocomplete="off">
+                <input type="text" id="search-input" placeholder="Search products…" autocomplete="off">
                 <button class="search-btn" id="search-btn">
                     <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </button>
@@ -41,9 +41,9 @@
             <div class="header-actions">
                 <nav>
                     <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="products.html">Products</a></li>
-                        <li><a href="#categories">Categories</a></li>
-                        <li><a href="#products-section">Deals</a></li>
+                        <li><a href="services.html" style="color:var(--accent);">Our other Services</a></li>
                         <li><a href="info.html">Store Info</a></li>
                     </ul>
                 </nav>
@@ -85,143 +85,141 @@
     <!-- Mobile Nav Drawer -->
     <div class="mobile-nav" id="mobile-nav">
         <div class="mobile-nav-panel">
-            <div class="mobile-nav-logo">
-                <img src="product_img/fav.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
-                Black<strong>Bird</strong>
-            </div>
-            <a href="index.html" class="mobile-nav-link active-link"><span>🏠</span> Home</a>
+             <div class="mobile-nav-logo">
+                 <img src="product_img/fav.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
+                 Black<strong>Bird</strong>
+             </div>
+            <a href="index.html" class="mobile-nav-link"><span>🏠</span> Home</a>
             <a href="products.html" class="mobile-nav-link"><span>🛍️</span> All Products</a>
-            <a href="#categories" class="mobile-nav-link" id="mn-categories"><span>📂</span> Categories</a>
-            <a href="#products-section" class="mobile-nav-link" id="mn-deals"><span>🔥</span> Deals</a>
+            <a href="services.html" class="mobile-nav-link active-link"><span>🛠️</span> Our Services</a>
             <a href="info.html" class="mobile-nav-link"><span>ℹ️</span> Store Info</a>
         </div>
     </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge"><span class="dot">✦</span> Exclusive Premium Collection</div>
-                    <h1>Black Bird</h1>
-                    <p>Quality fashion, electronics, and accessories delivered to your door in Vavuniya. 100% Cash on Delivery.</p>
-                    <div class="hero-btns">
-                        <a href="products.html" class="cta-btn">Shop Now</a>
-                        <a href="services.html" class="cta-outline">Our other Services</a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat"><strong>Rs 1,000</strong><span>Starting at</span></div>
-                        <div class="stat-divider"></div>
-                        <div class="stat"><strong>COD</strong><span>Only</span></div>
-                        <div class="stat-divider"></div>
-                        <div class="stat"><strong>Free</strong><span>Delivery</span></div>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-card-stack">
-                        <div class="floating-card fc1">
-                            <span class="fc-icon">🦅</span>
-                            <div>
-                                <div class="fc-name">Onyx Bird Ring</div>
-                                <div class="fc-price">Rs 1,500</div>
-                            </div>
-                        </div>
-                        <div class="floating-card fc2">
-                            <span class="fc-icon">🚚</span>
-                            <div>
-                                <div class="fc-name">Free Delivery</div>
-                                <div class="fc-price">Vavuniya</div>
-                            </div>
-                        </div>
-                        <div class="floating-card fc3">
-                            <span class="fc-icon">💵</span>
-                            <div>
-                                <div class="fc-name">Cash on Delivery</div>
-                                <div class="fc-price">No Cards</div>
-                            </div>
-                        </div>
-                        <div class="hero-big-icon">🦅</div>
-                    </div>
+    <!-- Page Hero -->
+    <section class="products-page-hero">
+        <h1>Our other Services</h1>
+        <p>Premium customized services for all your needs.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="products-page-main">
+        <div class="product-grid" id="services-grid" style="padding: 2rem;">
+            
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">🖨️</div>
+                <div class="product-info">
+                    <div class="product-category">Printing</div>
+                    <div class="product-title">3D Print</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Category Banners -->
-        <section class="categories-section" id="categories">
-            <div class="section-wrap">
-                <h2 class="section-title">Shop by Category</h2>
-                <div class="category-grid">
-                    <div class="cat-card cat-fashion" data-filter="Fashion">
-                        <div class="cat-icon">💍</div>
-                        <div class="cat-label">Jewellery</div>
-                        <div class="cat-sub">Rings &amp; Accessories</div>
-                    </div>
-                    <div class="cat-card cat-electronics" data-filter="Electronics">
-                        <div class="cat-icon">🔌</div>
-                        <div class="cat-label">Electronics</div>
-                        <div class="cat-sub">Gadgets &amp; Accessories</div>
-                    </div>
-                    <div class="cat-card cat-home" data-filter="Decor">
-                        <div class="cat-icon">🖼️</div>
-                        <div class="cat-label">Home Decor</div>
-                        <div class="cat-sub">Posters &amp; Styling</div>
-                    </div>
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">☕</div>
+                <div class="product-info">
+                    <div class="product-category">Printing</div>
+                    <div class="product-title">Cup Print</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Products Section -->
-        <section class="products-section" id="products-section">
-            <div class="section-wrap">
-                <div class="section-header">
-                    <h2 class="section-title" id="products-heading">Featured Products</h2>
-                </div>
-
-                <div id="no-results" class="no-results" style="display:none;">
-                    <p>😕 No products found. Try a different search or category.</p>
-                </div>
-
-                <div class="product-grid" id="product-grid">
-                    <!-- Products rendered by JS -->
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">👕</div>
+                <div class="product-info">
+                    <div class="product-category">Printing</div>
+                    <div class="product-title">T-Shirt Print</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Trust Banner -->
-        <section class="trust-banner">
-            <div class="section-wrap">
-                <div class="trust-grid">
-                    <div class="trust-item">
-                        <span class="trust-icon">💵</span>
-                        <div>
-                            <strong>Cash on Delivery</strong>
-                            <p>Pay only when you receive your order.</p>
-                        </div>
-                    </div>
-                    <div class="trust-item">
-                        <span class="trust-icon">🌟</span>
-                        <div>
-                            <strong>Premium Quality</strong>
-                            <p>Handpicked products for the best experience.</p>
-                        </div>
-                    </div>
-                    <div class="trust-item">
-                        <span class="trust-icon">📍</span>
-                        <div>
-                            <strong>Vavuniya Local</strong>
-                            <p>100% locally operated and community-first.</p>
-                        </div>
-                    </div>
-                    <div class="trust-item">
-                        <span class="trust-icon">🤝</span>
-                        <div>
-                            <strong>Dedicated Support</strong>
-                            <p>We are always here to help you.</p>
-                        </div>
-                    </div>
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">📱</div>
+                <div class="product-info">
+                    <div class="product-category">Printing</div>
+                    <div class="product-title">Phone Back Cover Print</div>
                 </div>
             </div>
-        </section>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">🖼️</div>
+                <div class="product-info">
+                    <div class="product-category">Customized</div>
+                    <div class="product-title">Customized Posters A4-A3-A5</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">🖼️</div>
+                <div class="product-info">
+                    <div class="product-category">Customized</div>
+                    <div class="product-title">Customized 3D Poster A3-A2</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">💻</div>
+                <div class="product-info">
+                    <div class="product-category">Digital</div>
+                    <div class="product-title">Web Development</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">📱</div>
+                <div class="product-info">
+                    <div class="product-category">Digital</div>
+                    <div class="product-title">Social Media Management</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">🎬</div>
+                <div class="product-info">
+                    <div class="product-category">Editing</div>
+                    <div class="product-title">Video Editing</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">📸</div>
+                <div class="product-info">
+                    <div class="product-category">Editing</div>
+                    <div class="product-title">Photo Editing</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">🎨</div>
+                <div class="product-info">
+                    <div class="product-category">Editing</div>
+                    <div class="product-title">Poster Editing</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">🔧</div>
+                <div class="product-info">
+                    <div class="product-category">Repair</div>
+                    <div class="product-title">Phone Repairing On Time</div>
+                    <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem;">We reach your location, take it, and repair on time</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">🖥️</div>
+                <div class="product-info">
+                    <div class="product-category">Hardware</div>
+                    <div class="product-title">PC Build</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="display:flex;align-items:center;justify-content:center;font-size:5rem;padding:2rem;background:var(--card-bg);">🛍️</div>
+                <div class="product-info">
+                    <div class="product-category">Sales</div>
+                    <div class="product-title">Selling Products</div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <!-- Footer -->
@@ -240,7 +238,6 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="products.html">All Products</a></li>
-                        <li><a href="#categories">Categories</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -260,7 +257,7 @@
         </div>
     </footer>
 
-    <!-- ====== CART OVERLAY ====== -->
+    <!-- Cart Overlay -->
     <div class="cart-overlay" id="cart-overlay">
         <div class="cart-panel" id="cart-panel">
             <div class="cart-header">
@@ -269,9 +266,7 @@
             </div>
             <div class="cart-items" id="cart-items"></div>
             <div class="cart-footer">
-                <div class="delivery-note">
-                    <span>📦</span> Free delivery on orders over Rs 2,500
-                </div>
+                <div class="delivery-note"><span>📦</span> Free delivery on orders over Rs 2,500</div>
                 <div class="cart-total-row">
                     <span>Subtotal</span>
                     <span id="cart-total-price">Rs 0</span>
@@ -281,7 +276,7 @@
         </div>
     </div>
 
-    <!-- ====== CHECKOUT MODAL ====== -->
+    <!-- Checkout Modal -->
     <div class="checkout-modal" id="checkout-modal">
         <div class="modal-content">
             <button class="modal-close-btn" id="cancel-checkout">×</button>
@@ -296,7 +291,7 @@
                 <div class="step" id="step2-indicator"><span>2</span> Review</div>
             </div>
 
-            <!-- Step 1: Delivery Details -->
+            <!-- Step 1 -->
             <div id="step-1" class="checkout-step">
                 <form id="checkout-form" novalidate>
                     <div class="form-row">
@@ -337,7 +332,6 @@
                         <label for="c-note">Delivery Note (Optional)</label>
                         <textarea id="c-note" rows="2" placeholder="Any landmark or special instructions…"></textarea>
                     </div>
-
                     <div class="payment-method-block">
                         <h3>Payment Method</h3>
                         <div class="payment-option">
@@ -349,12 +343,11 @@
                             <span class="payment-badge">Only Option</span>
                         </div>
                     </div>
-
                     <button type="submit" class="btn-next" id="btn-next">Review Order →</button>
                 </form>
             </div>
 
-            <!-- Step 2: Review & Confirm -->
+            <!-- Step 2 -->
             <div id="step-2" class="checkout-step" style="display:none;">
                 <div class="review-section">
                     <h3>Delivery To</h3>
@@ -374,10 +367,7 @@
         </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast"></div>
-
-    <!-- ====== PRODUCT DETAIL MODAL ====== -->
+    <!-- Product Detail Modal -->
     <div class="product-detail-modal" id="product-detail-modal">
         <div class="pd-panel">
             <button class="pd-close" id="pd-close-btn" aria-label="Close">×</button>
@@ -413,10 +403,24 @@
         </div>
     </div>
 
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
     <script src="firebase-config.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Products page: update count display after render
+        const origRender = window._renderHook;
+        const countEl = document.getElementById('count-num');
+        const observer = new MutationObserver(() => {
+            const visible = document.querySelectorAll('#product-grid .product-card').length;
+            if (countEl) countEl.textContent = visible;
+        });
+        const grid = document.getElementById('product-grid');
+        if (grid) observer.observe(grid, { childList: true });
+    </script>
 </body>
 </html>

@@ -472,11 +472,7 @@ function init() {
         }, 250);
     });
 
-    // CTA scroll
-    document.querySelector('.cta-btn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
-    });
+    // CTA btn — navigates to products.html (handled by href)
 
     // Checkout open
     checkoutBtn?.addEventListener('click', () => {
