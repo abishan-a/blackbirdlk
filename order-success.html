@@ -226,64 +226,29 @@
 
         <div class="success-icon">✅</div>
 
-        <h1>Order Confirmed!</h1>
+        <h1>Order Received! 🎉</h1>
         <p class="sub">
-            Thank you for shopping with us! Your order has been received and will be delivered to you in <strong>Vavuniya</strong> today or tomorrow.
+            Thank you for shopping with <strong>Black Bird</strong>!<br>
+            Your order has been received successfully.<br><br>
+            📞 <strong>We will call you soon</strong> to confirm your delivery details.
         </p>
-
-        <div class="order-id-box">
-            <span class="label">Your Order ID</span>
-            <span class="value" id="order-id">Loading…</span>
-        </div>
 
         <div class="info-grid">
             <div class="info-box">
                 <div class="label">Payment</div>
-                <div class="value" id="payment-method-display">💵 Cash on Delivery</div>
+                <div class="value">💵 Cash on Delivery</div>
             </div>
             <div class="info-box">
                 <div class="label">Delivery Area</div>
                 <div class="value">📍 Vavuniya</div>
             </div>
-            <div class="info-box">
-                <div class="label">Expected Delivery</div>
-                <div class="value" id="delivery-date">Today / Tomorrow</div>
-            </div>
-            <div class="info-box">
-                <div class="label">Contact</div>
-                <div class="value">📞 We'll call you</div>
-            </div>
         </div>
 
-        <div class="steps-list">
-            <h3>Order Status</h3>
-            <div class="step-item">
-                <div class="step-dot">✓</div>
-                <div>
-                    <div class="step-label">Order Placed</div>
-                    <div class="step-desc">We've received your order</div>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-dot pending">2</div>
-                <div>
-                    <div class="step-label">Preparing</div>
-                    <div class="step-desc">Your items are being packed</div>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-dot pending">3</div>
-                <div>
-                    <div class="step-label">Out for Delivery</div>
-                    <div class="step-desc">On the way to your address</div>
-                </div>
-            </div>
-            <div class="step-item">
-                <div class="step-dot pending">4</div>
-                <div>
-                    <div class="step-label">Delivered</div>
-                    <div class="step-desc" id="delivered-desc">Pay on arrival — enjoy!</div>
-                </div>
+        <div class="call-notice" style="background: rgba(16,185,129,0.1); border: 1.5px solid rgba(16,185,129,0.3); border-radius: 14px; padding: 1.2rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;">
+            <span style="font-size: 2rem;">📞</span>
+            <div style="text-align: left;">
+                <div style="font-weight: 700; font-size: 1rem; color: #10B981;">We'll Call You Shortly</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Sit tight! Our team will reach out to confirm your order and arrange delivery.</div>
             </div>
         </div>
 
@@ -295,29 +260,11 @@
     </div>
 
     <script>
-        // Generate a random order ID
-        const orderId = 'VVN-' + Math.random().toString(36).toUpperCase().slice(2, 7) + '-' + Date.now().toString().slice(-4);
-        document.getElementById('order-id').textContent = orderId;
-
-        // Set delivery date
-        const now = new Date();
-        const hour = now.getHours();
-        const options = { weekday: 'short', month: 'short', day: 'numeric' };
-        const tomorrow = new Date(now);
-        tomorrow.setDate(tomorrow.getDate() + 1);
-
-        const delivery = hour < 14
-            ? `Today, ${now.toLocaleDateString('en-LK', options)}`
-            : `Tomorrow, ${tomorrow.toLocaleDateString('en-LK', options)}`;
-
-        document.getElementById('delivery-date').textContent = delivery;
-
         // Check payment method
         const urlParams = new URLSearchParams(window.location.search);
         const method = urlParams.get('method');
         if (method === 'Advance') {
-            document.getElementById('payment-method-display').innerHTML = '💳 Advance Payment';
-            document.getElementById('delivered-desc').textContent = 'Advance Paid — enjoy!';
+            document.querySelector('.info-box .value').innerHTML = '💳 Advance Payment';
         }
     </script>
 </body>
