@@ -180,7 +180,7 @@ const products = [
     {
         id: 7,
         name: "Kids mini gun",
-        category: "Electronics",
+        category: "Toys & Kids",
         price: 4000,
         original: 4800,
         badge: "new",
@@ -379,9 +379,162 @@ const products = [
         }
     },
 
-    { id: 15, name: "Spiderman mask adjustable free size", category: "Electronics", price: 6000, original: 8000, badge: "new", rating: 5.0, reviews: 5, freeDelivery: true, img: "product_img/spider man mask.png", details: { description: "Free size", material: "Elastic ", style: "Spider man ", finish: "Red", occasion: "Marvel", sizes: ["Standard"], highlights: [ "wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } }
+    { id: 15, name: "Spiderman mask adjustable free size", category: "Toys & Kids", price: 6000, original: 8000, badge: "new", rating: 5.0, reviews: 5, freeDelivery: true, img: "product_img/spider man mask.png", details: { description: "Free size", material: "Elastic ", style: "Spider man ", finish: "Red", occasion: "Marvel", sizes: ["Standard"], highlights: [ "wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+
+    {
+        id: 16,
+        name: "Remote control car with led",
+        category: "Toys & Kids",
+        price: 8500,
+        original: 10000,
+        badge: "new",
+        rating: 5.0,
+        reviews: 3,
+        freeDelivery: true,
+        img: "product_img/remorttruck.png",
+        details: {
+            description: "✨ **LED Lights සමඟ සුපිරි Look එකක්** ⚡ **20KM/H Speed** – වේගය කැමති අයට හොඳම තේරීම 🎮 **2.4GHZ Remote Control** – Smooth Control & Long Range 🔋 **Rechargeable Battery** – නැවත නැවත charge කර භාවිතා කරන්න 📏 **1:16 Size** – Realistic & Stylish Design   💸 **මිල – Rs. 7999/=** ",
+            material: "Good material ",
+            style: "2.4hz ",
+            finish: "Black",
+            occasion: "Play",
+            sizes: ["Standard"],
+            highlights: [
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "📶 Wireless connection"
+            ]
+        }
+    },
+
+    {
+        id: 17,
+        name: "A9 PRO ANC APP VERSION 2025  ",
+        category: "Electronics",
+        price: 4550,
+        original: 6000,
+        badge: "Hot",
+        rating: 5.0,
+        reviews: 4,
+        freeDelivery: true,
+        img: "product_img/displaytws.png",
+        details: {
+            description: "A9 PRO ANC APP VERSION 2025  😍 මේක 2025 අලුතින් release කරපු A9 Pro ANC model එක APP එකත් සමග ආපු . ඒ  කියන්නෙ පරන ඒවා  වගේ නෙමේ ඔයට මෙක phoneAPP  connect  🤟wallpaper photo 🤟message notifications , 🤟call  history  call dial  2025 APP version❤️   🟢 LED display    🟢 Equalizer   🟢 Crystal Clear Sound   🟢 Long Battery Life   🟢 Water & Sweat Resistant   🟢 Touch Controls: Easy access to your favorite tunes.   🟢 ANC & ENC Supported   🟢 Charging Port :Type C   🟢 Weather   🟢 Call dial   🟢 message notifications   🟢 Calendar /Alarm 🟥Free case     450/-",
+            material: "Plastic ",
+            style: "Wireless airpods with display ",
+            finish: "Black and white ",
+            occasion: "Multi use",
+            sizes: ["Standard"],
+            highlights: [
+                "📶 High-speed Bluetooth wireless connection",
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available"
+            ]
+        }
+    },
+
+    {
+        id: 18,
+        name: "Tws",
+        category: "Electronics",
+        price: 2000,
+        original: 2500,
+        badge: "new",
+        rating: 5.0,
+        reviews: 0,
+        freeDelivery: true,
+        img: "product_img/tws.png",
+        details: {
+            description: "Airpods",
+            material: "Plastic good material ",
+            style: "Wireless portable tws",
+            finish: "White",
+            occasion: "Entertainment ",
+            sizes: ["Standard"],
+            highlights: [
+                "📶 High-speed Bluetooth wireless connection",
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available"
+            ]
+        }
+    },
+
+    {
+        id: 19,
+        name: "Watch ultra 2",
+        category: "Electronics",
+        price: 2400,
+        original: 2800,
+        badge: "new",
+        rating: 5.0,
+        reviews: 0,
+        freeDelivery: true,
+        img: "product_img/watchultra.png",
+        details: {
+            description: "Smart watch ",
+            material: "Good ",
+            style: "Smart watch ",
+            finish: "Black ",
+            occasion: "Outdoor ",
+            sizes: ["Standard"],
+            highlights: [
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available"
+            ]
+        }
+    },
+
+    {
+        id: 20,
+        name: "Jbl pure bass 760 BT",
+        category: "Electronics",
+        price: 4600,
+        original: 8000,
+        badge: "new",
+        rating: 5.0,
+        reviews: 0,
+        freeDelivery: true,
+        img: "product_img/jblhedset.jpeg",
+        details: {
+            description: "Pure bass",
+            material: "Black",
+            style: "Wireless portable headphone",
+            finish: "Black",
+            occasion: "Travel",
+            sizes: ["Standard"],
+            highlights: [
+                "📶 High-speed Bluetooth wireless connection",
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available"
+            ]
+        }
+    }
+
+
     
 ];
+
+// ─── Fisher-Yates Shuffle (with Spiderman mask pinned at top) ────
+function shuffle(array) {
+    const pinIndex = array.findIndex(p => p.id === 15);
+    let pinItem = null;
+    if (pinIndex !== -1) {
+        pinItem = array.splice(pinIndex, 1)[0];
+    }
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    if (pinItem) {
+        array.unshift(pinItem);
+    }
+}
+shuffle(products);
 
 // ─── State ────────────────────────────────────────────
 let cart = JSON.parse(localStorage.getItem('bb-cart') || '[]');
@@ -596,14 +749,25 @@ function renderProducts() {
     // Sort
     if (currentSort === 'price-asc') list.sort((a, b) => a.price - b.price);
     else if (currentSort === 'price-desc') list.sort((a, b) => b.price - a.price);
+    else if (currentSort === 'name-asc') list.sort((a, b) => a.name.localeCompare(b.name));
+    else if (currentSort === 'name-desc') list.sort((a, b) => b.name.localeCompare(a.name));
+    else if (currentSort === 'popularity') list.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
 
     // Heading update (null-safe — doesn't exist on products page)
     const heading = document.getElementById('products-heading');
     if (heading) heading.textContent = currentFilter === 'All' ? 'Featured Products' : currentFilter;
 
-    // Limit to 3 random products on index.html
+    // Limit to 3 random products on index.html (with Spiderman mask pinned)
     if (!document.querySelector('.products-page-main')) {
-        list = list.sort(() => Math.random() - 0.5).slice(0, 3);
+        const pinIndex = list.findIndex(p => p.id === 15);
+        let pinItem = null;
+        if (pinIndex !== -1) {
+            pinItem = list.splice(pinIndex, 1)[0];
+        }
+        list = list.sort(() => Math.random() - 0.5).slice(0, 2);
+        if (pinItem) {
+            list.unshift(pinItem);
+        }
     }
 
     // Products count (products page)
