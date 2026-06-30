@@ -513,6 +513,33 @@ const products = [
                 "💵 Cash on Delivery available"
             ]
         }
+    },
+
+    {
+        id: 21,
+        name: "Neckband ",
+        category: "Electronics",
+        price: 2500,
+        original: 3500,
+        badge: "new",
+        rating: 5.0,
+        reviews: 0,
+        freeDelivery: true,
+        img: "product_img/Neckband.png",
+        details: {
+            description: "Pue bass good sound ",
+            material: "Silicone ",
+            style: "Wireless portable neckband",
+            finish: "Black ",
+            occasion: "Entertainment and for bike riders",
+            sizes: ["Standard"],
+            highlights: [
+                "📶 High-speed Bluetooth wireless connection",
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available"
+            ]
+        }
     }
 
 
