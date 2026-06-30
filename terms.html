@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Bird - Store Info</title>
+    <title>Black Bird - Terms & Conditions</title>
     <link rel="icon" type="image/png" href="product_img/fav.png">
-    <meta name="description" content="Store information and contact details for Black Bird.">
+    <meta name="description" content="Terms & Conditions for Black Bird Vavuniya. Read our policies on returns, advance payments, delivery delays, and cancellations.">
     <link rel="stylesheet" href="styles.css">
     <script>
         // Apply theme immediately to prevent FOUT
@@ -16,94 +16,191 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .info-page-hero {
+        .terms-page-hero {
             background: linear-gradient(135deg, var(--surface), var(--bg));
             padding: 6rem 2rem 4rem;
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
         
-        .info-page-hero h1 {
+        .terms-page-hero h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 3rem;
             color: var(--text-main);
             margin-bottom: 1rem;
         }
 
-        .info-page-hero p {
+        .terms-page-hero p {
             color: var(--text-muted);
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .info-content {
-            max-width: 800px;
+        .terms-content {
+            max-width: 900px;
             margin: 4rem auto;
             padding: 0 2rem;
         }
 
-        .info-card {
+        .terms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .terms-grid {
+                grid-template-columns: 1fr;
+            }
+            .terms-page-hero h1 { font-size: 2.2rem; }
+        }
+
+        .term-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-            text-align: center;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .info-card h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            font-size: 2rem;
+        .term-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            opacity: 0.8;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: left;
-        }
-
-        .info-item {
-            background: var(--bg);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease;
-        }
-
-        .info-item:hover {
+        .term-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent);
         }
 
-        .info-item .icon {
+        .term-card .icon-wrap {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: inline-block;
         }
 
-        .info-item .label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+        .term-card h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-title);
+            margin-bottom: 1rem;
         }
 
-        .info-item .value {
-            font-size: 1.2rem;
-            color: var(--text-main);
-            font-weight: 600;
+        .term-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Calculator Widget */
+        .calculator-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-top: 4rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+        }
+
+        .calculator-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-title);
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .calculator-section p.sub {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
         }
 
         @media (max-width: 768px) {
-            .info-page-hero h1 { font-size: 2.2rem; }
-            .info-card { padding: 2rem; }
+            .calc-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .calculator-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .calc-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 18px;
+        }
+
+        .calc-box h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color var(--transition);
+        }
+
+        .input-group input:focus {
+            border-color: var(--accent);
+        }
+
+        .calc-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px dashed var(--border);
+            font-weight: 600;
+        }
+
+        .calc-result span {
+            color: var(--accent);
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -113,7 +210,7 @@
     <header id="main-header">
         <div class="nav-container">
              <a href="index.html" class="logo">
-                <img src="product_img/favicon.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
+                <img src="product_img/fav.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
                 <span>Black<strong>Bird</strong></span>
              </a>
 
@@ -129,7 +226,7 @@
                     <ul class="nav-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="products.html">Products</a></li>
-                        <li><a href="info.html" style="color:var(--accent);">Store Info</a></li>
+                        <li><a href="info.html">Store Info</a></li>
                     </ul>
                 </nav>
                 <!-- Theme Toggle Switch -->
@@ -175,53 +272,78 @@
              </div>
             <a href="index.html" class="mobile-nav-link"><span>🏠</span> Home</a>
             <a href="products.html" class="mobile-nav-link"><span>🛍️</span> All Products</a>
-            <a href="info.html" class="mobile-nav-link active-link"><span>ℹ️</span> Store Info</a>
+            <a href="info.html" class="mobile-nav-link"><span>ℹ️</span> Store Info</a>
         </div>
     </div>
 
     <!-- Page Hero -->
-    <section class="info-page-hero">
-        <h1>Store Information</h1>
-        <p>Get to know more about the team behind Black Bird.</p>
+    <section class="terms-page-hero">
+        <h1>Terms & Conditions</h1>
+        <p>Please read our policies carefully regarding orders, returns, payments, and delays.</p>
     </section>
 
     <!-- Main Content -->
-    <main class="info-content">
-        <div class="info-card">
-            <h2>Contact Details</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="icon">👤</span>
-                    <div class="label">Owner</div>
-                    <div class="value">Kesavan Kirishanan</div>
+    <main class="terms-content">
+        <div class="terms-grid">
+            <!-- Term 1: Returns -->
+            <div class="term-card">
+                <span class="icon-wrap">🔄</span>
+                <h2>Return Policy</h2>
+                <p>We accept product returns <strong>only if the product is not working</strong>. Please inspect your item immediately upon delivery and report any functionality issues to us.</p>
+            </div>
+
+            <!-- Term 2: Advance Payment -->
+            <div class="term-card">
+                <span class="icon-wrap">💳</span>
+                <h2>Advance Payment</h2>
+                <p>For orders exceeding <strong>Rs. 10,000</strong>, a <strong>50% advance payment</strong> is mandatory. The remaining 50% can be paid as Cash on Delivery.</p>
+            </div>
+
+            <!-- Term 3: Delivery Delay Compensation -->
+            <div class="term-card">
+                <span class="icon-wrap">⏳</span>
+                <h2>Delay Compensation</h2>
+                <p>If the delivery of your product is delayed by <strong>more than 31 days</strong> from the order date, we will pay you a compensation of <strong>Rs. 200 per day</strong> for every additional day of delay.</p>
+            </div>
+
+            <!-- Term 4: Order Cancellation -->
+            <div class="term-card">
+                <span class="icon-wrap">❌</span>
+                <h2>Order Cancellation</h2>
+                <p>You can cancel your order at any time up to <strong>1 day (24 hours)</strong> from the time the order was placed. Cancellations are not accepted after this period.</p>
+            </div>
+        </div>
+
+        <!-- Interactive Calculator Widget -->
+        <section class="calculator-section">
+            <h2>Terms Helper & Calculator</h2>
+            <p class="sub">Quickly check advance requirements and delay compensations based on your order details.</p>
+            <div class="calc-grid">
+                <!-- Advance Checker -->
+                <div class="calc-box">
+                    <h3><span>💰</span> Advance Payment Calculator</h3>
+                    <div class="input-group">
+                        <label for="order-val-input">Enter Order Value (Rs.)</label>
+                        <input type="number" id="order-val-input" placeholder="e.g. 12000" min="0">
+                    </div>
+                    <div class="calc-result" id="advance-result">
+                        Enter a value above to calculate.
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="icon">📱</span>
-                    <div class="label">Owner Contact</div>
-                    <div class="value">070 751 7768</div>
-                </div>
-                <div class="info-item">
-                    <span class="icon">🏢</span>
-                    <div class="label">Company Contact</div>
-                    <div class="value">077 651 7768</div>
-                </div>
-                <div class="info-item">
-                    <span class="icon">📍</span>
-                    <div class="label">Location</div>
-                    <div class="value">Vavuniya, Sri Lanka</div>
-                </div>
-                <div class="info-item">
-                    <span class="icon">📸</span>
-                    <div class="label">Instagram</div>
-                    <div class="value">
-                        <a href="https://www.instagram.com/black_bird07_off/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:5px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                            @black_bird07_off
-                        </a>
+
+                <!-- Delay Checker -->
+                <div class="calc-box">
+                    <h3><span>📅</span> Delay Compensation Calculator</h3>
+                    <div class="input-group">
+                        <label for="delay-days-input">Total Days Taken for Delivery</label>
+                        <input type="number" id="delay-days-input" placeholder="e.g. 35" min="0">
+                    </div>
+                    <div class="calc-result" id="delay-result">
+                        Enter days taken to calculate.
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -273,7 +395,6 @@
 
     <!-- Cart Overlay -->
     <div class="cart-overlay" id="cart-overlay">
-        <!-- Assuming same cart structure is useful if script.js operates on it. If it complains we can remove it. But script.js might bind to these globally. -->
         <div class="cart-panel" id="cart-panel">
             <div class="cart-header">
                 <h2>Your Cart</h2>
@@ -296,5 +417,41 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
     <script src="firebase-config.js"></script>
     <script src="script.js"></script>
+
+    <!-- Calculator Code -->
+    <script>
+        const orderValInput = document.getElementById('order-val-input');
+        const advanceResult = document.getElementById('advance-result');
+        const delayDaysInput = document.getElementById('delay-days-input');
+        const delayResult = document.getElementById('delay-result');
+
+        orderValInput.addEventListener('input', () => {
+            const val = parseFloat(orderValInput.value);
+            if (isNaN(val) || val < 0) {
+                advanceResult.textContent = 'Enter a valid order value.';
+                return;
+            }
+            if (val > 10000) {
+                const advance = val * 0.5;
+                advanceResult.innerHTML = `Advance required: <span>Rs. ${advance.toLocaleString()}</span> (50%)`;
+            } else {
+                advanceResult.innerHTML = `No advance required. <span>Rs. 0</span> (100% COD)`;
+            }
+        });
+
+        delayDaysInput.addEventListener('input', () => {
+            const days = parseInt(delayDaysInput.value, 10);
+            if (isNaN(days) || days < 0) {
+                delayResult.textContent = 'Enter valid days.';
+                return;
+            }
+            if (days > 31) {
+                const compensation = (days - 31) * 200;
+                delayResult.innerHTML = `Delay: ${days - 31} days. Compensation: <span>Rs. ${compensation.toLocaleString()}</span>`;
+            } else {
+                delayResult.innerHTML = `No delay compensation applies (within 31 days limit).`;
+            }
+        });
+    </script>
 </body>
 </html>

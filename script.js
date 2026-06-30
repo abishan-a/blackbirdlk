@@ -1113,8 +1113,8 @@ function buildReview() {
         reviewItemsEl.appendChild(row);
     });
 
-    if (total > 6000) {
-        reviewTotalEl.innerHTML = `Rs ${total.toLocaleString()} <br><span style="color:#d32f2f; font-size: 0.85em; font-weight: 500;">(Advance Payment Required)</span>`;
+    if (total > 10000) {
+        reviewTotalEl.innerHTML = `Rs ${total.toLocaleString()} <br><span style="color:#d32f2f; font-size: 0.85em; font-weight: 500;">(50% Advance Payment Required)</span>`;
     } else {
         reviewTotalEl.textContent = `Rs ${total.toLocaleString()} (COD)`;
     }
@@ -1193,7 +1193,7 @@ function placeOrder() {
             img: item.img || null
         })),
         total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-        paymentMethod: cart.reduce((sum, item) => sum + item.price * item.quantity, 0) > 6000 ? 'Advance' : 'COD',
+        paymentMethod: cart.reduce((sum, item) => sum + item.price * item.quantity, 0) > 10000 ? 'Advance' : 'COD',
         status: 'pending',
         createdAt: new Date().toISOString(),
         orderNumber: 'BB-' + Date.now().toString(36).toUpperCase()
