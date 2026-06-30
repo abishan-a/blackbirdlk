@@ -377,15 +377,22 @@ const products = [
                 "💵 Cash on Delivery available"
             ]
         }
-    }
+    },
+
+    { id: 15, name: "Spiderman mask adjustable free size", category: "Electronics", price: 6000, original: 8000, badge: "new", rating: 5.0, reviews: 5, freeDelivery: true, img: "product_img/spider man mask.png", details: { description: "Free size", material: "Elastic ", style: "Spider man ", finish: "Red", occasion: "Marvel", sizes: ["Standard"], highlights: [ "wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } }
     
 ];
 
 // ─── State ────────────────────────────────────────────
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('bb-cart') || '[]');
 let currentFilter = 'All';
 let currentSort = 'default';
 let searchQuery = '';
+
+// ─── Persist cart to localStorage ─────────────────────
+function saveCart() {
+    localStorage.setItem('bb-cart', JSON.stringify(cart));
+}
 
 // ─── DOM References ───────────────────────────────────
 const productGrid     = document.getElementById('product-grid');
@@ -419,6 +426,9 @@ const reviewTotalEl   = document.getElementById('review-total');
 
 // ─── Init ─────────────────────────────────────────────
 function init() {
+    // Disable right click globally
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
     renderProducts();
     updateCart();
 
@@ -483,6 +493,9 @@ function init() {
         cartOverlay.classList.remove('active');
         goToStep(1);
         checkoutModal?.classList.add('active');
+        // Stamp the time the form was opened (used for speed-bot check)
+        const tsEl = document.getElementById('bb-form-ts');
+        if (tsEl) tsEl.value = Date.now();
     });
 
     // Close checkout modal
@@ -771,6 +784,7 @@ window.addToCart = function(productId, btn, selectedSize = null) {
         });
     }
 
+    saveCart();
     updateCart();
     showToast(`✅ "${product.name}"${selectedSize ? ` (${selectedSize})` : ''} added to cart!`);
 
@@ -795,12 +809,14 @@ window.updateQuantity = function(id, delta, size = '') {
     if (!item) return;
     item.quantity += delta;
     if (item.quantity <= 0) cart = cart.filter(i => !(i.id === id && i.selectedSize === targetSize));
+    saveCart();
     updateCart();
 };
 
 window.removeItem = function(id, size = '') {
     const targetSize = size === 'null' || size === '' ? null : size;
     cart = cart.filter(i => !(i.id === id && i.selectedSize === targetSize));
+    saveCart();
     updateCart();
 };
 
@@ -913,7 +929,57 @@ function buildReview() {
     }
 }
 
+// ─── Anti-Spam Guard ───────────────────────────────────
+function isSpam() {
+    // 1. Honeypot: bot filled the hidden field
+    const honeypot = document.getElementById('bb-url');
+    if (honeypot && honeypot.value.trim() !== '') {
+        console.warn('[BB] Spam blocked: honeypot triggered');
+        return true;
+    }
+
+    // 2. Speed check: real humans take at least 3 seconds to fill the form
+    const tsEl = document.getElementById('bb-form-ts');
+    if (tsEl && tsEl.value) {
+        const elapsed = Date.now() - parseInt(tsEl.value, 10);
+        if (elapsed < 3000) {
+            console.warn('[BB] Spam blocked: form submitted too fast (' + elapsed + 'ms)');
+            return true;
+        }
+    }
+
+    // 3. Rate limit: max 4 orders per day per device
+    const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000;
+    const history = JSON.parse(localStorage.getItem('bb-order-times') || '[]')
+                        .filter(t => now - t < oneDay);
+    if (history.length >= 4) {
+        const oldest = Math.min(...history);
+        const hoursLeft = Math.ceil((oldest + oneDay - now) / (60 * 60 * 1000));
+        showToast(`⚠️ Daily order limit reached. Try again in ${hoursLeft} hour${hoursLeft === 1 ? '' : 's'}.`);
+        console.warn('[BB] Spam blocked: daily rate limit exceeded');
+        return true;
+    }
+
+    return false;
+}
+
+function recordOrder() {
+    const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000;
+    const history = JSON.parse(localStorage.getItem('bb-order-times') || '[]')
+                        .filter(t => now - t < oneDay);
+    history.push(now);
+    localStorage.setItem('bb-order-times', JSON.stringify(history));
+}
+
 function placeOrder() {
+    // ── Anti-Spam Check ──
+    if (isSpam()) {
+        showToast('⚠️ Order blocked. Please try again.');
+        return;
+    }
+
     // Animate button
     btnConfirm.textContent = '⏳ Placing Order…';
     btnConfirm.disabled = true;
@@ -949,7 +1015,9 @@ function placeOrder() {
 
     saveOrder
         .then(() => {
+            recordOrder();
             cart = [];
+            saveCart();
             updateCart();
             checkoutModal.classList.remove('active');
             checkoutForm.reset();
