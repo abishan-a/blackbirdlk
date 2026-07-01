@@ -630,6 +630,17 @@ function init() {
     // Disable right click globally
     document.addEventListener('contextmenu', e => e.preventDefault());
 
+    // Parse category from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    if (categoryParam) {
+        currentFilter = categoryParam;
+        // Update active filter pill
+        document.querySelectorAll('.pill').forEach(p => {
+            p.classList.toggle('active', p.dataset.filter === currentFilter);
+        });
+    }
+
     renderProducts();
     updateCart();
 
@@ -658,12 +669,16 @@ function init() {
     document.querySelectorAll('.cat-card').forEach(card => {
         card.addEventListener('click', () => {
             const filter = card.dataset.filter;
+            if (!document.querySelector('.products-page-main')) {
+                window.location.href = `products.html?category=${encodeURIComponent(filter)}`;
+                return;
+            }
             document.querySelectorAll('.pill').forEach(p => {
                 p.classList.toggle('active', p.dataset.filter === filter);
             });
             currentFilter = filter;
             renderProducts();
-            document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
         });
     });
 
