@@ -540,7 +540,28 @@ const products = [
                 "💵 Cash on Delivery available"
             ]
         }
-    }
+    },
+
+    { id: 22, name: "Multitool stain less steal", category: "Home & Security", price: 2500, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/multytool.png", details: { description: "Multi tool", material: "Stainless Steel ", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } 
+    },
+
+    { id: 23, name: "Airpods with powerbank", category: "Electronics", price: 2500, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/3displaytws.png", details: { description: "Power bank + airpodd", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+
+    { id: 24, name: " 128gb sd card ", category: "Electronics", price: 4250, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/sdcard.png", details: { description: "SanDisk ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "💵 Cash on Delivery available", "🎁 Great for gifting", "🎁 Great for gifting" ] } },
+
+    { id: 25, name: "32gb pendrive ", category: "Electronics", price: 2600, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/dt50.png", details: { description: "Kingston ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+
+    { id: 26, name: "128gb pendrive ", category: "Electronics", price: 5000, original: 6000, badge: "new", rating: 5.0, reviews: 5, freeDelivery: true, img: "product_img/kingston pendrive.png", details: { description: "Kingston ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+
+    { id: 27, name: "Pvc playing cards", category: "Fashion", price: 1300, original: 2000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/pcards.png", details: { description: "Good", material: "Pvc", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+
+    { id: 28, name: "Massage gun", category: "Electronics", price: 4500, original: 5750, badge: "new", rating: 5.0, reviews: 2, freeDelivery: true, img: "product_img/Massage gun.png", details: { description: "Its used for massage ", material: "Good", style: "Portable ", finish: "White ", occasion: "To pain relief ", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+
+    { id: 29, name: "Gell blaster gun Bb bullet gun", category: "Toys & Kids", price: 14000, original: 16000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/toygun.png", details: { description: "Best quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+
+    { id: 30, name: "Feeder bottle for bb bullet gun", category: "Toys & Kids", price: 1500, original: 1750, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/feeder.png", details: { description: "Best quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+
+    { id: 31, name: "Tatoo hand sleeve", category: "Fashion", price: 1300, original: 1500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/handsleef.png", details: { description: "One piece ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } }
 
 
     
