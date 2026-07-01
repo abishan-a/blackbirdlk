@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="onyx">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,9 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         .info-page-hero {
             background: linear-gradient(135deg, var(--surface), var(--bg));
@@ -22,7 +25,7 @@
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
-        
+
         .info-page-hero h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 3rem;
@@ -48,7 +51,7 @@
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
             text-align: center;
         }
@@ -102,25 +105,35 @@
         }
 
         @media (max-width: 768px) {
-            .info-page-hero h1 { font-size: 2.2rem; }
-            .info-card { padding: 2rem; }
+            .info-page-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .info-card {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
     <header id="main-header">
         <div class="nav-container">
-             <a href="index.html" class="logo">
+            <a href="index.html" class="logo">
                 <img src="product_img/favicon.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
                 <span>Black<strong>Bird</strong></span>
-             </a>
+            </a>
 
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Search products…" autocomplete="off">
                 <button class="search-btn" id="search-btn">
-                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5"
+                        fill="none">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
                 </button>
             </div>
 
@@ -133,7 +146,8 @@
                     </ul>
                 </nav>
                 <!-- Theme Toggle Switch -->
-                <button class="theme-toggle-switch" id="theme-toggle" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+                <button class="theme-toggle-switch" id="theme-toggle" aria-label="Toggle Theme"
+                    title="Toggle Light/Dark Theme">
                     <span class="toggle-track">
                         <span class="toggle-thumb">
                             <!-- Sun (Light) -->
@@ -149,14 +163,20 @@
                                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                             </svg>
                             <!-- Moon (Dark) -->
-                            <svg class="toggle-icon-svg moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <svg class="toggle-icon-svg moon-icon" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                             </svg>
                         </span>
                     </span>
                 </button>
                 <div class="cart-icon" id="cart-icon" title="Open Cart">
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
                     <span class="cart-count" id="cart-count">0</span>
                 </div>
                 <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -169,10 +189,10 @@
     <!-- Mobile Nav Drawer -->
     <div class="mobile-nav" id="mobile-nav">
         <div class="mobile-nav-panel">
-             <div class="mobile-nav-logo">
-                 <img src="product_img/fav.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
-                 Black<strong>Bird</strong>
-             </div>
+            <div class="mobile-nav-logo">
+                <img src="product_img/fav.png" alt="Black Bird Logo" class="logo-img" loading="lazy">
+                Black<strong>Bird</strong>
+            </div>
             <a href="index.html" class="mobile-nav-link"><span>🏠</span> Home</a>
             <a href="products.html" class="mobile-nav-link"><span>🛍️</span> All Products</a>
             <a href="info.html" class="mobile-nav-link active-link"><span>ℹ️</span> Store Info</a>
@@ -198,12 +218,12 @@
                 <div class="info-item">
                     <span class="icon">📱</span>
                     <div class="label">Owner Contact</div>
-                    <div class="value">070 751 7768</div>
+                    <div class="value">077 651 7768</div>
                 </div>
                 <div class="info-item">
                     <span class="icon">🏢</span>
                     <div class="label">Company Contact</div>
-                    <div class="value">077 651 7768</div>
+                    <div class="value">070 751 7768</div>
                 </div>
                 <div class="info-item">
                     <span class="icon">📍</span>
@@ -214,9 +234,14 @@
                     <span class="icon">📸</span>
                     <div class="label">Instagram</div>
                     <div class="value">
-                        <a href="https://www.instagram.com/black_bird07_off/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:5px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                            @black_bird07_off
+                        <a href="https://www.instagram.com/tatookiri7/" target="_blank" rel="noopener noreferrer"
+                            style="color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:5px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                            @tatookiri7
                         </a>
                     </div>
                 </div>
@@ -253,8 +278,13 @@
                     <h4>Follow Us</h4>
                     <ul>
                         <li>
-                            <a href="https://www.instagram.com/black_bird07_off/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:6px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            <a href="https://www.instagram.com/black_bird07_off/" target="_blank"
+                                rel="noopener noreferrer" style="display:flex;align-items:center;gap:6px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="currentColor" style="flex-shrink:0;">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
                                 @black_bird07_off
                             </a>
                         </li>
@@ -265,7 +295,8 @@
         <div class="footer-bottom">
             <div class="section-wrap">
                 <p>© 2026 Black Bird. All rights reserved. &nbsp;|&nbsp; Vavuniya, Northern Province, Sri Lanka.</p>
-                <p style="margin-top: 0.5rem;"><a href="terms.html" style="color: var(--accent); text-decoration: underline;">Terms & Conditions apply.</a></p>
+                <p style="margin-top: 0.5rem;"><a href="terms.html"
+                        style="color: var(--accent); text-decoration: underline;">Terms & Conditions apply.</a></p>
                 <p style="margin-top: 0.5rem;">Developed By Abishan A</p>
             </div>
         </div>
@@ -297,4 +328,5 @@
     <script src="firebase-config.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
