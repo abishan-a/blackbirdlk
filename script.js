@@ -26,7 +26,7 @@ const products = [
                 "🦁 Intricate lion face detailing",
                 "💍 Comfortable wide band",
                 "✨ High-polish silver finish",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery only",
                 "🎁 Perfect as a gift"
             ]
@@ -54,7 +54,7 @@ const products = [
                 "🎧 Bluetooth connection",
                 "🎵 Insert TF card to play mp3 files",
                 "🔋 USB Charging",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery only",
                 "🎁 Great for gifting"
             ]
@@ -83,7 +83,7 @@ const products = [
                 "📶 WiFi connection for remote live viewing",
                 "🌙 Night vision and motion detection alerts",
                 "🔋 Rechargeable battery & continuous power support",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery only"
             ]
         }
@@ -110,7 +110,7 @@ const products = [
                 "❄️ Live Game Universal phone cooler",
                 "📱 Universal clamp fits most smartphones",
                 "🌈 Available in random aesthetic colors",
-                "🚚 Rs 2,000 including delivery charge",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -138,7 +138,7 @@ const products = [
                 "📶 Wireless Bluetooth connection with long range",
                 "🔋 Long-lasting rechargeable battery",
                 "💧 Splashproof & rugged outdoor-friendly design",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -171,7 +171,7 @@ const products = [
                 "📐 Size choices: A3, A2, and A1 dimensions",
                 "🎨 Custom designs available (send any JPG image)",
                 "📦 Safely packed and shipped in secure tubes",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -196,7 +196,7 @@ const products = [
             occasion: "Casual",
             sizes: ["Standard"],
             highlights: [
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -222,7 +222,7 @@ const products = [
             sizes: ["Standard"],
             highlights: [
                 "🔋 Long-lasting rechargeable battery",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available",
                 "🎁 Great for gifting"
             ]
@@ -241,14 +241,14 @@ const products = [
         freeDelivery: false,
         img: "product_img/2700 Bag.png",
         details: {
-            description: "3 Pcs Travel Backpack  Price - Rs2700/= Delivery charge:- 400/=",
+            description: "3 Pcs Travel Backpack  Price - Rs2700/= Delivery charge:- 300/=",
             material: "Standard",
             style: "Modern",
             finish: " ",
             occasion: "Travel",
             sizes: ["Standard"],
             highlights: [
-                "🚚 Delivery charge:- 400/=",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -273,7 +273,7 @@ const products = [
             occasion: "Home",
             sizes: ["Standard"],
             highlights: [
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -299,7 +299,7 @@ const products = [
             sizes: ["Standard"],
             highlights: [
                 "🔋 Long-lasting rechargeable battery",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -348,7 +348,7 @@ const products = [
             occasion: "Travel",
             sizes: ["Standard"],
             highlights: [
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -373,13 +373,13 @@ const products = [
             occasion: " Home Office",
             sizes: ["Standard"],
             highlights: [
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
     },
 
-    { id: 15, name: "Spiderman mask adjustable free size", category: "Toys & Kids", price: 6000, original: 8000, badge: "new", rating: 5.0, reviews: 5, freeDelivery: true, img: "product_img/spider man mask.png", details: { description: "Free size", material: "Elastic ", style: "Spider man ", finish: "Red", occasion: "Marvel", sizes: ["Standard"], highlights: [ "wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+    { id: 15, name: "Spiderman mask adjustable free size", category: "Toys & Kids", price: 6000, original: 8000, badge: "new", rating: 5.0, reviews: 5, freeDelivery: true, img: "product_img/spider man mask.png", details: { description: "Free size", material: "Elastic ", style: "Spider man ", finish: "Red", occasion: "Marvel", sizes: ["Standard"], highlights: [ "wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } },
 
     {
         id: 16,
@@ -401,7 +401,7 @@ const products = [
             sizes: ["Standard"],
             highlights: [
                 "🔋 Long-lasting rechargeable battery",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available",
                 "📶 Wireless connection"
             ]
@@ -429,7 +429,7 @@ const products = [
             highlights: [
                 "📶 High-speed Bluetooth wireless connection",
                 "🔋 Long-lasting rechargeable battery",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -456,7 +456,7 @@ const products = [
             highlights: [
                 "📶 High-speed Bluetooth wireless connection",
                 "🔋 Long-lasting rechargeable battery",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -482,7 +482,7 @@ const products = [
             sizes: ["Standard"],
             highlights: [
                 "🔋 Long-lasting rechargeable battery",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -509,7 +509,7 @@ const products = [
             highlights: [
                 "📶 High-speed Bluetooth wireless connection",
                 "🔋 Long-lasting rechargeable battery",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
@@ -536,32 +536,32 @@ const products = [
             highlights: [
                 "📶 High-speed Bluetooth wireless connection",
                 "🔋 Long-lasting rechargeable battery",
-                "🚚 FREE delivery to Vavuniya",
+                "🚚 Rs 300 Delivery Fee",
                 "💵 Cash on Delivery available"
             ]
         }
     },
 
-    { id: 22, name: "Multitool stain less steal", category: "Home & Security", price: 2500, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/multytool.png", details: { description: "Multi tool", material: "Stainless Steel ", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } 
+    { id: 22, name: "Multitool stain less steal", category: "Home & Security", price: 2500, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/multytool.png", details: { description: "Multi tool", material: "Stainless Steel ", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } 
     },
 
-    { id: 23, name: "Airpods with powerbank", category: "Electronics", price: 2500, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/3displaytws.png", details: { description: "Power bank + airpodd", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+    { id: 23, name: "Airpods with powerbank", category: "Electronics", price: 2500, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/3displaytws.png", details: { description: "Power bank + airpodd", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } },
 
     { id: 24, name: " 128gb sd card ", category: "Electronics", price: 4250, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/sdcard.png", details: { description: "SanDisk ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "💵 Cash on Delivery available", "🎁 Great for gifting", "🎁 Great for gifting" ] } },
 
-    { id: 25, name: "32gb pendrive ", category: "Electronics", price: 2600, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/dt50.png", details: { description: "Kingston ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+    { id: 25, name: "32gb pendrive ", category: "Electronics", price: 2600, original: null, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/dt50.png", details: { description: "Kingston ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } },
 
-    { id: 26, name: "128gb pendrive ", category: "Electronics", price: 5000, original: 6000, badge: "new", rating: 5.0, reviews: 5, freeDelivery: true, img: "product_img/kingston pendrive.png", details: { description: "Kingston ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+    { id: 26, name: "128gb pendrive ", category: "Electronics", price: 5000, original: 6000, badge: "new", rating: 5.0, reviews: 5, freeDelivery: true, img: "product_img/kingston pendrive.png", details: { description: "Kingston ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
 
-    { id: 27, name: "Pvc playing cards", category: "Fashion", price: 1300, original: 2000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/pcards.png", details: { description: "Good", material: "Pvc", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+    { id: 27, name: "Pvc playing cards", category: "Fashion", price: 1300, original: 2000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/pcards.png", details: { description: "Good", material: "Pvc", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
 
-    { id: 28, name: "Massage gun", category: "Electronics", price: 4500, original: 5750, badge: "new", rating: 5.0, reviews: 2, freeDelivery: true, img: "product_img/Massage gun.png", details: { description: "Its used for massage ", material: "Good", style: "Portable ", finish: "White ", occasion: "To pain relief ", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+    { id: 28, name: "Massage gun", category: "Electronics", price: 4500, original: 5750, badge: "new", rating: 5.0, reviews: 2, freeDelivery: true, img: "product_img/Massage gun.png", details: { description: "Its used for massage ", material: "Good", style: "Portable ", finish: "White ", occasion: "To pain relief ", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } },
 
-    { id: 29, name: "Gell blaster gun Bb bullet gun", category: "Toys & Kids", price: 14000, original: 16000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/toygun.png", details: { description: "Best quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+    { id: 29, name: "Gell blaster gun Bb bullet gun", category: "Toys & Kids", price: 14000, original: 16000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/toygun.png", details: { description: "Best quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
 
-    { id: 30, name: "Feeder bottle for bb bullet gun", category: "Toys & Kids", price: 1500, original: 1750, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/feeder.png", details: { description: "Best quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+    { id: 30, name: "Feeder bottle for bb bullet gun", category: "Toys & Kids", price: 1500, original: 1750, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/feeder.png", details: { description: "Best quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } },
 
-    { id: 31, name: "Tatoo hand sleeve", category: "Fashion", price: 1300, original: 1500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/handsleef.png", details: { description: "One piece ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } }
+    { id: 31, name: "Tatoo hand sleeve", category: "Fashion", price: 1300, original: 1500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/handsleef.png", details: { description: "One piece ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } }
 
 
     
@@ -864,9 +864,7 @@ function renderProducts() {
             ? `<span class="product-price-original">Rs ${product.original.toLocaleString()}</span>`
             : '';
 
-        const freeDeliveryTag = product.freeDelivery
-            ? `<div class="free-delivery-tag">🚚 FREE Delivery</div>`
-            : '';
+        const freeDeliveryTag = '';
 
         const stars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
 
@@ -935,9 +933,7 @@ window.openProductDetail = function(productId) {
         d.occasion ? `<tr><td>Occasion</td><td>${d.occasion}</td></tr>` : ''
     ].join('');
 
-    const freeDeliveryBadge = product.freeDelivery
-        ? `<span class="detail-free-delivery">🚚 FREE Delivery</span>`
-        : '';
+    const freeDeliveryBadge = '';
 
     const modal = document.getElementById('product-detail-modal');
     if (!modal) return;
@@ -1137,9 +1133,9 @@ function buildReview() {
     `;
 
     reviewItemsEl.innerHTML = '';
-    let total = 0;
+    let subtotal = 0;
     cart.forEach(item => {
-        total += item.price * item.quantity;
+        subtotal += item.price * item.quantity;
         const row = document.createElement('div');
         row.className = 'review-item';
         row.innerHTML = `
@@ -1148,6 +1144,18 @@ function buildReview() {
         `;
         reviewItemsEl.appendChild(row);
     });
+
+    // Add Delivery Fee Row
+    const deliveryFee = 300;
+    const deliveryRow = document.createElement('div');
+    deliveryRow.className = 'review-item';
+    deliveryRow.innerHTML = `
+        <span>Delivery Fee</span>
+        <strong>Rs ${deliveryFee.toLocaleString()}</strong>
+    `;
+    reviewItemsEl.appendChild(deliveryRow);
+
+    const total = subtotal + deliveryFee;
 
     if (total > 10000) {
         reviewTotalEl.innerHTML = `Rs ${total.toLocaleString()} <br><span style="color:#d32f2f; font-size: 0.85em; font-weight: 500;">(50% Advance Payment Required)</span>`;
@@ -1211,6 +1219,10 @@ function placeOrder() {
     btnConfirm.textContent = '⏳ Placing Order…';
     btnConfirm.disabled = true;
 
+    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const deliveryFee = 300;
+    const total = subtotal + deliveryFee;
+
     // Gather order data
     const orderData = {
         customer: {
@@ -1228,8 +1240,9 @@ function placeOrder() {
             selectedSize: item.selectedSize || null,
             img: item.img || null
         })),
-        total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-        paymentMethod: cart.reduce((sum, item) => sum + item.price * item.quantity, 0) > 10000 ? 'Advance' : 'COD',
+        deliveryFee: deliveryFee,
+        total: total,
+        paymentMethod: total > 10000 ? 'Advance' : 'COD',
         status: 'pending',
         createdAt: new Date().toISOString(),
         orderNumber: 'BB-' + Date.now().toString(36).toUpperCase()
