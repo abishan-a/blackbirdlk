@@ -561,7 +561,245 @@ const products = [
 
     { id: 30, name: "Feeder bottle for bb bullet gun", category: "Toys & Kids", price: 1500, original: 1750, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/feeder.png", details: { description: "Best quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } },
 
-    { id: 31, name: "Tatoo hand sleeve", category: "Fashion", price: 1300, original: 1500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/handsleef.png", details: { description: "One piece ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } }
+    { id: 31, name: "Tatoo hand sleeve", category: "Fashion", price: 1300, original: 1500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/handsleef.png", details: { description: "One piece ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 Rs 300 Delivery Fee", "💵 Cash on Delivery available" ] } },
+
+    {
+        id: 32,
+        name: "Air Pod Pro (AAA Grade) ",
+        category: "Electronics",
+        price: 3700,
+        original: 4000,
+        badge: "new",
+        rating: 5.0,
+        reviews: 3,
+        freeDelivery: true,
+        img: "product_img/airpodsproAAA.png",
+        details: {
+            description: "Air Pod Pro (AAA Grade)  Free delivery Shipment Stock 🔥",
+            material: "Standard",
+            style: "Modern",
+            finish: "White",
+            occasion: "Outdoor, home entertainment,work uses",
+            sizes: ["Standard"],
+            highlights: [
+                "📶 High-speed Bluetooth wireless connection",
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available"
+            ]
+        }
+    },
+
+    {
+        id: 33,
+        name: "CK CALVIN KLEIN STEEL WATCHES FOR LADIES",
+        category: "Fashion",
+        price: 1670,
+        original: 1900,
+        badge: "new",
+        rating: 5.0,
+        reviews: 2,
+        freeDelivery: true,
+        img: "product_img/kelvin watch.png",
+        details: {
+            description: "CK CALVIN KLEIN STEEL WATCHES FOR LADIES -GOLD STEEL WITH DIFFERENT COLOR DIALS",
+            material: "Standard",
+            style: "Modern",
+            finish: "Gold, silver and other colours ",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🎁 Great for gifting"
+            ]
+        }
+    },
+
+    {
+        id: 34,
+        name: "G-SHOCK CASIO Men’s watches",
+        category: "Fashion",
+        price: 4600,
+        original: 5000,
+        badge: "new",
+        rating: 5.0,
+        reviews: 2,
+        freeDelivery: true,
+        img: "product_img/gshockwatch.png",
+        details: {
+            description: "NEW STOCK G-SHOCK CASIO Men’s watches Dual time Stainless steel Water resist💧💦",
+            material: "Stainless steel ",
+            style: "Modern",
+            finish: "Silver, gold ",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🎁 Great for gifting"
+            ]
+        }
+    },
+
+    {
+        id: 35,
+        name: "FASHION STEEL  WATCHES FOR LADIES -Gold and Mix Design  ",
+        category: "Electronics",
+        price: 1280,
+        original: 1500,
+        badge: "new",
+        rating: 5.0,
+        reviews: 3,
+        freeDelivery: true,
+        img: "product_img/steel watch.png",
+        details: {
+            description: "Enter a beautiful description of the product here.",
+            material: "Standard",
+            style: "Modern",
+            finish: "Black, gold, silver, gray",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🎁 Great for gifting"
+            ]
+        }
+    },
+
+    {
+        id: 36,
+        name: " BW8 SIM SMART WATCH  ",
+        category: "Electronics",
+        price: 5500,
+        original: 5800,
+        badge: "new",
+        rating: 5.0,
+        reviews: 2,
+        freeDelivery: true,
+        img: "product_img/BW8SIM Watch.png",
+        details: {
+            description: "NEW ARRIVALS 💥  BW8 SIM SMART WATCH  - 1 straps",
+            material: "Standard",
+            style: "1 straps",
+            finish: "Orange, black ",
+            occasion: "Outdoor ",
+            sizes: ["Standard"],
+            highlights: [
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🔋 Long-lasting rechargeable battery",
+                "📶 Wireless connection"
+            ]
+        }
+    },
+
+    {
+        id: 37,
+        name: "BUGATTI LUXURY RUBBER STRAP WATCHES FOR MENS",
+        category: "Electronics",
+        price: 12600,
+        original: 13000,
+        badge: "new",
+        rating: 5.0,
+        reviews: 4,
+        freeDelivery: true,
+        img: "product_img/bugatti watch.png",
+        details: {
+            description: "BUGATTI LUXURY RUBBER STRAP WATCHES FOR MENS -Silver & Black Case, Black & White Strap",
+            material: "Standard",
+            style: "Modern",
+            finish: "-Silver & Black Case, Black & White Strap",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available"
+            ]
+        }
+    },
+
+    {
+        id: 38,
+        name: "XFENG LATER STRAP WATCHES FOR MENS",
+        category: "Fashion",
+        price: 2100,
+        original: 2500,
+        badge: "new",
+        rating: 5.0,
+        reviews: 3,
+        freeDelivery: true,
+        img: "product_img/XEFENG LATHER.png",
+        details: {
+            description: "XFENG LATER STRAP WATCHES FOR MENs",
+            material: "Standard",
+            style: "Modern",
+            finish: "Matte Finish",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🎁 Great for gifting"
+            ]
+        }
+    },
+
+    {
+        id: 39,
+        name: "EMAR DXB ARABIC AURA PLASTIC MATERIAL WATCHES FOR MEN",
+        category: "Fashion",
+        price: 2000,
+        original: 2500,
+        badge: "new",
+        rating: 5.0,
+        reviews: 3,
+        freeDelivery: true,
+        img: "product_img/Arabicwatch.png",
+        details: {
+            description: "NEW STOCK EMAR DXB ARABIC AURA PLASTIC MATERIAL WATCHES FOR MEN -With Box & Link Removel tool",
+            material: "Standard",
+            style: "Modern",
+            finish: "Matte Finish",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🎁 Great for gifting"
+            ]
+        }
+    },
+
+    {
+        id: 40,
+        name: " JBL AIR PODS ",
+        category: "Electronics",
+        price: 2000,
+        original: 2500,
+        badge: "new",
+        rating: 5.0,
+        reviews: 2,
+        freeDelivery: true,
+        img: "product_img/jbl tws.png",
+        details: {
+            description: "NEW STOCK ARRIVALS 😊  JBL AIR PODS 📍 FREE CASE",
+            material: "Standard",
+            style: "Modern",
+            finish: "Matte Finish",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "📶 High-speed Bluetooth wireless connection",
+                "🔋 Long-lasting rechargeable battery",
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🎁 Great for gifting"
+            ]
+        }
+    }
 
 
     
