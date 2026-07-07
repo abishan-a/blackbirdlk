@@ -801,7 +801,9 @@ const products = [
         }
     },
 
-   { id: 41, name: "Metal USB HUB 7 Port with Adapter `", category: "Electronics", price: 2850, original: 3300, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Metal USB.png", details: { description: "⭐️ *Amazon Basics* ®️ Rs 2850/- Metal USB HUB 7 Port with Adapter Limited Stocks", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } }
+   { id: 41, name: "Metal USB HUB 7 Port with Adapter `", category: "Electronics", price: 2850, original: 3300, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Metal USB.png", details: { description: "⭐️ *Amazon Basics* ®️ Rs 2850/- Metal USB HUB 7 Port with Adapter Limited Stocks", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+
+   { id: 42, name: "10 in 1 Docking Station with Wireless Charging Function ", category: "Electronics", price: 5850, original: 6500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/10 in 1 Docking.jpg", details: { description: "🔥 *New Arrival* 10 in 1 Docking Station with Wireless Charging Function Rs 5850/-", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } }
 
 
     
