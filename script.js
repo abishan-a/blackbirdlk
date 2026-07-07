@@ -810,7 +810,9 @@ const products = [
 
    { id: 45, name: "Cute bunny Wireless Headphone", category: "Electronics", price: 4500, original: 5000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Cute bunny Wireless Headphone.jpg", details: { description: "Cute Bunny Plush Wireless Headset Price - Rs 4500/=", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
 
-   { id: 46, name: "Gt3 Max drone drone with camera", category: "Electronics", price: 15500, original: 18000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Gt3 Max drone drone.jpg", details: { description: "8k quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } }
+   { id: 46, name: "Gt3 Max drone drone with camera", category: "Electronics", price: 15500, original: 18000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Gt3 Max drone drone.jpg", details: { description: "8k quality ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "📶 High-speed Bluetooth wireless connection", "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+
+   { id: 47, name: "Hawasaki mini bike", category: "Electronics", price: 4500, original: 5000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Hawasaki mini bike.jpg", details: { description: "Enter a beautiful description of the product here.", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "💵 Cash on Delivery available" ] } }
 
     
 ];
