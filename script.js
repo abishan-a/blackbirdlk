@@ -822,7 +822,9 @@ const products = [
 
    { id: 51, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/redbull.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
 
-   { id: 52, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Atlassian.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } }
+   { id: 52, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Atlassian.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+
+   { id: 53, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/kik.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } }
 
     
 ];
