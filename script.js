@@ -816,7 +816,9 @@ const products = [
 
    { id: 48, name: "`Massage gun", category: "Electronics", price: 1875, original: 2500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Massage gun.jpg", details: { description: "Enter a beautiful description of the product here.", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
 
-   { id: 49, name: "`OSK-701 Rechargeable Smart Scalp Massager", category: "Electronics", price: 2090, original: 3450, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/OSK-701 Rechargeable.jpg", details: { description: "Enter a beautiful description of the product here.", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } }
+   { id: 49, name: "`OSK-701 Rechargeable Smart Scalp Massager", category: "Electronics", price: 2090, original: 3450, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/OSK-701 Rechargeable.jpg", details: { description: "Enter a beautiful description of the product here.", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🔋 Long-lasting rechargeable battery", "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available" ] } },
+
+   { id: 50, name: "Ktm duke bike", category: "Electronics", price: 4500, original: 5000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Ktm duke bike.jpg", details: { description: "Enter a beautiful description of the product here.", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "💵 Cash on Delivery available" ] } }
 
     
 ];
