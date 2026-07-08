@@ -826,7 +826,9 @@ const products = [
 
    { id: 53, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/kik.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
 
-   { id: 54, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/benz.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } }
+   { id: 54, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/benz.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+
+   { id: 55, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/placeholder.jpeg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } }
     
 ];
 
