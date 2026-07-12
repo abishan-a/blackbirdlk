@@ -830,7 +830,35 @@ const products = [
 
    { id: 55, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/McLaren.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
    
-    { id: 56, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/racingbulls.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } }
+   { id: 56, name: "Hotwheel F1 racing car", category: "Electronics", price: 9000, original: 8500, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/racingbulls.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+
+   {
+        id: 57,
+        name: "Lamborghini mini car",
+        category: "Electronics",
+        price: 12000,
+        original: 8500,
+        badge: "new",
+        rating: 5.0,
+        reviews: 0,
+        freeDelivery: true,
+        img: "product_img/Lamborghini mini car.jpg",
+        details: {
+            description: "✨ Features: Lamborghini   ✅ Doors can be opened ✅ Working front and rear lights ✅ Realistic engine sound effects ✅ Premium die-cast metal body ✅ Rubber tyres",
+            material: "Steal",
+            style: "Modern",
+            finish: "Matte Finish",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🎁 Great for gifting"
+            ]
+        }
+   }
+
+   
 ];
 
 // ─── Fisher-Yates Shuffle (with Spiderman mask pinned at top) ────
