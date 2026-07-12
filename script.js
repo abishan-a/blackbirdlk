@@ -856,6 +856,32 @@ const products = [
                 "🎁 Great for gifting"
             ]
         }
+   },
+
+   {
+        id: 58,
+        name: "Bmw mini car",
+        category: "Electronics",
+        price: 12000,
+        original: 9000,
+        badge: "new",
+        rating: 5.0,
+        reviews: 0,
+        freeDelivery: true,
+        img: "product_img/Bmw mini car.jpg",
+        details: {
+            description: "✨ Features: BMW 530li(Officially Licensed)  ✅ Doors can be opened ✅ Working front and rear lights ❌ No engine sound ✅ Premium die-cast metal body ✅ Rubber tyres",
+            material: "Steal",
+            style: "Modern",
+            finish: "Matte Finish",
+            occasion: "Casual",
+            sizes: ["Standard"],
+            highlights: [
+                "🚚 FREE delivery to Vavuniya",
+                "💵 Cash on Delivery available",
+                "🎁 Great for gifting"
+            ]
+        }
    }
 
    
