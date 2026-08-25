@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="onyx">
+<html lang="en" data-theme="rose">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,9 @@
     <meta name="description" content="Terms & Conditions for Black Bird Vavuniya. Read our policies on returns, advance payments, delivery delays, and cancellations.">
     <link rel="stylesheet" href="styles.css">
     <script>
-        // Apply theme immediately to prevent FOUT
-        const savedTheme = localStorage.getItem('bb-theme') || 'rose';
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        // Ensure permanent clean light theme
+        document.documentElement.setAttribute('data-theme', 'rose');
+        localStorage.setItem('bb-theme', 'rose');
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -369,7 +369,6 @@
                     <ul>
                         <li><a href="info.html">Store Info</a></li>
                         <li><a href="terms.html">Terms & Conditions</a></li>
-                        <li><a href="admin.html" style="opacity: 0.6; font-size: 0.9em;">Admin Login</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
