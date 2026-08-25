@@ -6,70 +6,83 @@
 /* --- Google Fonts: Space Grotesk & Plus Jakarta Sans --- */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap');
 
-/* --- Design Tokens & Themes --- */
+/* --- Design Tokens & Themes: LIQUID GLASS SYSTEM --- */
 :root, [data-theme="rose"] {
-    --bg:            #FAF6F0;
-    --bg-soft:       #FAF1E6;
-    --surface:       #FDFBFA;
+    --bg:            #F8F3EE;
+    --bg-soft:       rgba(255, 255, 255, 0.45);
+    --surface:       rgba(255, 255, 255, 0.65);
+    --surface-solid: #FFFFFF;
     --primary:       #C2410C;
-    --primary-light: #F5EAE1;
+    --primary-light: rgba(194, 65, 12, 0.12);
     --accent:        #C2410C;
     --accent-hover:  #9A3412;
-    --accent-light:  rgba(194, 65, 12, 0.10);
+    --accent-light:  rgba(194, 65, 12, 0.12);
+    --accent-glow:   rgba(194, 65, 12, 0.35);
     --gold:          #F59E0B;
     --success:       #10B981;
-    --danger:        #DC2626;
-    --text-main:     #4A2E2B;
-    --text-muted:    #8C6E6A;
-    --text-title:    #3A120A;
-    --border:        #EEDCC8;
-    --border-active: rgba(194, 65, 12, 0.4);
-    --shadow-sm:     0 1px 3px rgba(139,92,26,.05);
-    --shadow-md:     0 10px 24px rgba(139,92,26,.08);
-    --shadow-lg:     0 16px 44px rgba(139,92,26,.12);
-    --radius:        20px;
-    --radius-lg:     28px;
-    --font-display:  'Space Grotesk', sans-serif;
-    --font-body:     'Plus Jakarta Sans', sans-serif;
-    --transition:    0.22s cubic-bezier(.4,0,.2,1);
-    --bg-gradient:   radial-gradient(760px 480px at 8% -10%, rgba(194, 65, 12, 0.18), transparent 56%),
-                     radial-gradient(600px 420px at 105% 8%, rgba(194, 65, 12, 0.12), transparent 58%),
-                     linear-gradient(180deg, #FAF6F0, #FAF1E6 48%, #FDFBFA);
-    --glass:         rgba(255, 255, 255, 0.75);
-    --glass-br:      rgba(194, 65, 12, 0.15);
+    --danger:        #EF4444;
+    --text-main:     #3B221E;
+    --text-muted:    #7D625D;
+    --text-title:    #24100D;
+    --border:        rgba(255, 255, 255, 0.7);
+    --border-active: rgba(194, 65, 12, 0.5);
+    
+    /* Liquid Glass Specular & Shadows */
+    --liquid-glass:       linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.35) 100%);
+    --liquid-glass-card:  linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.45) 100%);
+    --liquid-border:      rgba(255, 255, 255, 0.85);
+    --liquid-shadow:      0 20px 50px rgba(139, 92, 26, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
+    --liquid-specular:    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(139, 92, 26, 0.05);
+    --liquid-blur:        blur(24px) saturate(190%);
+    --card:               var(--liquid-glass-card);
+    --shadow-sm:          0 2px 8px rgba(139, 92, 26, 0.05);
+    --shadow-md:          0 12px 32px rgba(139, 92, 26, 0.09);
+    --shadow-lg:          0 24px 54px rgba(139, 92, 26, 0.13);
+    --shadow-soft:        0 10px 30px rgba(139, 92, 26, 0.06);
+    --radius:             22px;
+    --radius-lg:          32px;
+    --font-display:       'Space Grotesk', sans-serif;
+    --font-body:          'Plus Jakarta Sans', sans-serif;
+    --transition:         0.28s cubic-bezier(.34, 1.56, .64, 1);
+    --glass:              var(--liquid-glass);
+    --glass-br:           rgba(255, 255, 255, 0.75);
 }
 
 /* Onyx Gold (Dark theme) */
 [data-theme="onyx"] {
-    --bg:            #0b0b0b;
-    --bg-soft:       #141414;
-    --surface:       #171717;
-    --primary:       #ffd633;
-    --primary-light: #141414;
-    --accent:        #ffd633;
-    --accent-hover:  #ffb800;
-    --accent-light:  rgba(255, 214, 51, 0.10);
-    --gold:          #ffd633;
+    --bg:            #0A0A0C;
+    --bg-soft:       rgba(20, 20, 25, 0.6);
+    --surface:       rgba(24, 24, 30, 0.7);
+    --surface-solid: #131317;
+    --primary:       #FFD633;
+    --primary-light: rgba(255, 214, 51, 0.12);
+    --accent:        #FFD633;
+    --accent-hover:  #FFB800;
+    --accent-light:  rgba(255, 214, 51, 0.12);
+    --accent-glow:   rgba(255, 214, 51, 0.4);
+    --gold:          #FFD633;
     --success:       #10B981;
-    --danger:        #DC2626;
-    --text-main:     #fff8da;
-    --text-muted:    #c8c0a3;
-    --text-title:    #ffffff;
-    --border:        rgba(255, 214, 51, 0.18);
-    --border-active: rgba(255, 214, 51, 0.4);
-    --shadow-sm:     0 1px 3px rgba(0,0,0,.4);
-    --shadow-md:     0 10px 26px rgba(0,0,0,.22);
-    --shadow-lg:     0 18px 54px rgba(0,0,0,.38);
-    --radius:        20px;
-    --radius-lg:     28px;
-    --font-display:  'Space Grotesk', sans-serif;
-    --font-body:     'Plus Jakarta Sans', sans-serif;
-    --transition:    0.22s cubic-bezier(.4,0,.2,1);
-    --bg-gradient:   radial-gradient(760px 480px at 8% -10%, rgba(255, 214, 51, 0.18), transparent 56%),
-                     radial-gradient(600px 420px at 105% 8%, rgba(255, 184, 0, 0.12), transparent 58%),
-                     linear-gradient(180deg, #0b0b0b, #101010 48%, #0b0b0b);
-    --glass:         rgba(255, 255, 255, 0.055);
-    --glass-br:      rgba(255, 214, 51, 0.18);
+    --danger:        #EF4444;
+    --text-main:     #FDFBF4;
+    --text-muted:    #B5B09E;
+    --text-title:    #FFFFFF;
+    --border:        rgba(255, 255, 255, 0.14);
+    --border-active: rgba(255, 214, 51, 0.5);
+    
+    /* Liquid Glass Specular & Shadows (Dark) */
+    --liquid-glass:       linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    --liquid-glass-card:  linear-gradient(135deg, rgba(28, 28, 35, 0.75) 0%, rgba(18, 18, 22, 0.65) 100%);
+    --liquid-border:      rgba(255, 255, 255, 0.16);
+    --liquid-shadow:      0 25px 60px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.35);
+    --liquid-specular:    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5);
+    --liquid-blur:        blur(28px) saturate(200%);
+    --card:               var(--liquid-glass-card);
+    --shadow-sm:          0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md:          0 12px 32px rgba(0, 0, 0, 0.45);
+    --shadow-lg:          0 24px 60px rgba(0, 0, 0, 0.65);
+    --shadow-soft:        0 10px 30px rgba(0, 0, 0, 0.35);
+    --glass:              var(--liquid-glass);
+    --glass-br:           rgba(255, 255, 255, 0.15);
 }
 
 /* --- Reset --- */
@@ -79,11 +92,12 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-body);
-    background: var(--bg-gradient);
-    background-attachment: fixed;
+    background-color: var(--bg);
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
@@ -94,52 +108,132 @@ img { display: block; max-width: 100%; }
 
 button { font-family: var(--font-body); cursor: pointer; }
 
+/* =====================================================
+   LIQUID AMBIENT BACKGROUND ORBS
+   ===================================================== */
+.liquid-ambient-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.liquid-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(85px);
+    opacity: 0.6;
+    animation: floatLiquid 18s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.45), rgba(194, 65, 12, 0.15));
+    top: -120px;
+    left: -100px;
+    animation-duration: 20s;
+}
+
+.orb-2 {
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.35), rgba(217, 119, 6, 0.1));
+    top: 25%;
+    right: -120px;
+    animation-duration: 22s;
+    animation-delay: -4s;
+}
+
+.orb-3 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.35), rgba(194, 65, 12, 0.08));
+    bottom: 8%;
+    left: 10%;
+    animation-duration: 25s;
+    animation-delay: -9s;
+}
+
+.orb-4 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.25), rgba(6, 182, 212, 0.1));
+    bottom: -100px;
+    right: 15%;
+    animation-duration: 24s;
+    animation-delay: -14s;
+}
+
+[data-theme="onyx"] .liquid-orb {
+    opacity: 0.35;
+    filter: blur(105px);
+}
+
+@keyframes floatLiquid {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -50px) scale(1.08); }
+    100% { transform: translate(-30px, 30px) scale(0.95); }
+}
+
 /* --- Layout Utility --- */
 .section-wrap {
     max-width: 1220px;
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* =====================================================
-   ANNOUNCEMENT BAR
+   ANNOUNCEMENT BAR (LIQUID GLASS)
    ===================================================== */
 .announcement-bar {
-    background: var(--surface);
-    border-bottom: 1px solid var(--glass-br);
+    background: var(--liquid-glass);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    border-bottom: 1px solid var(--liquid-border);
+    box-shadow: var(--liquid-specular);
     color: var(--text-muted);
     text-align: center;
     font-size: 0.85rem;
     padding: 0.55rem 1rem;
-    font-family: var(--font-body);
     font-weight: 600;
     letter-spacing: 0.2px;
     white-space: nowrap;
     overflow: hidden;
+    position: relative;
+    z-index: 201;
 }
 
 /* =====================================================
-   HEADER
+   HEADER (LIQUID GLASS FLOATING BAR)
    ===================================================== */
 header {
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--glass-br);
+    background: var(--liquid-glass);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    border-bottom: 1px solid var(--liquid-border);
+    box-shadow: var(--liquid-specular), var(--shadow-sm);
     position: sticky;
     top: 0;
     z-index: 200;
-    transition: box-shadow var(--transition);
+    transition: all var(--transition);
 }
 
 header.scrolled {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--liquid-specular), var(--shadow-md);
+    background: var(--liquid-glass-card);
 }
 
 .nav-container {
     max-width: 1220px;
     margin: 0 auto;
-    padding: 0.9rem 2rem;
+    padding: 0.85rem 2rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -149,55 +243,50 @@ header.scrolled {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     font-family: var(--font-display);
     font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text-title);
     white-space: nowrap;
     user-select: none;
+    transition: transform var(--transition);
 }
 
-.logo-icon {
-    width: 38px;
-    height: 38px;
-    background: linear-gradient(135deg, var(--accent), #fff2a4 55%, var(--accent-hover));
-    color: #111;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 1.1rem;
-    box-shadow: 0 10px 24px var(--accent-light);
-    transition: var(--transition);
+.logo:hover {
+    transform: scale(1.03);
 }
 
 .logo-img {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
     border-radius: 50%;
+    filter: drop-shadow(0 4px 8px var(--accent-glow));
 }
 
 .logo strong { color: var(--accent); }
 
-/* Search Bar */
+/* Search Bar (Liquid Glass Pill) */
 .search-bar {
     flex: 1;
     display: flex;
     align-items: center;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
+    background: var(--liquid-glass);
+    border: 1.5px solid var(--liquid-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--liquid-specular);
     border-radius: 9999px;
     overflow: hidden;
-    transition: border-color var(--transition), box-shadow var(--transition);
-    max-width: 520px;
+    transition: all var(--transition);
+    max-width: 480px;
 }
 
 .search-bar:focus-within {
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    box-shadow: 0 0 0 3px var(--accent-light), var(--liquid-specular);
+    background: var(--surface-solid);
 }
 
 .search-bar input {
@@ -214,36 +303,44 @@ header.scrolled {
 .search-btn {
     background: var(--accent);
     border: none;
-    padding: 0.65rem 1rem;
-    color: white;
+    padding: 0.65rem 1.1rem;
+    color: #111;
     display: flex;
     align-items: center;
-    transition: background var(--transition);
+    transition: all var(--transition);
 }
 
-.search-btn:hover { background: var(--accent-hover); }
+.search-btn:hover {
+    background: var(--accent-hover);
+    color: #fff;
+}
 
 /* Nav Links */
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.4rem;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 1.4rem;
 }
 
 .nav-links a {
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 0.92rem;
+    font-weight: 600;
     color: var(--text-muted);
-    transition: color var(--transition);
+    transition: color var(--transition), transform var(--transition);
+    position: relative;
+    padding: 4px 0;
 }
 
-.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover {
+    color: var(--accent);
+    transform: translateY(-1px);
+}
 
 /* Cart Icon */
 .cart-icon {
@@ -253,26 +350,35 @@ header.scrolled {
     transition: transform var(--transition);
     display: flex;
     align-items: center;
+    background: var(--liquid-glass);
+    border: 1px solid var(--liquid-border);
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: var(--liquid-specular);
 }
 
-.cart-icon:hover { transform: scale(1.08); }
+.cart-icon:hover {
+    transform: scale(1.1);
+    border-color: var(--accent);
+}
 
 .cart-count {
     position: absolute;
-    top: -7px;
-    right: -9px;
+    top: -5px;
+    right: -5px;
     background: var(--accent);
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 700;
-    min-width: 18px;
-    height: 18px;
+    color: #111;
+    font-size: 0.72rem;
+    font-weight: 800;
+    min-width: 19px;
+    height: 19px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 3px;
-    animation: popIn .2s ease;
+    padding: 0 4px;
+    box-shadow: 0 4px 10px var(--accent-glow);
+    animation: popIn .25s ease;
 }
 
 @keyframes popIn {
@@ -282,61 +388,81 @@ header.scrolled {
 }
 
 /* =====================================================
-   HERO
+   HERO SECTION (LIQUID GLASS SHOWCASE)
    ===================================================== */
 .hero {
     background: transparent;
     color: var(--text-main);
-    padding: 5rem 2rem 4rem;
+    padding: 4rem 2rem 5rem;
     position: relative;
-    overflow: hidden;
+    z-index: 1;
 }
 
 .hero-grid {
     max-width: 1220px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1.15fr 0.85fr;
     align-items: center;
-    gap: 3rem;
+    gap: 3.5rem;
 }
 
 .hero-content {
-    border: 1px solid var(--glass-br);
-    background: var(--glass);
+    background: var(--liquid-glass-card);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    border: 1.5px solid var(--liquid-border);
     border-radius: var(--radius-lg);
-    padding: clamp(24px, 4vw, 46px);
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    padding: clamp(28px, 4vw, 50px);
+    box-shadow: var(--liquid-specular), var(--liquid-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
 }
 
 .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 12px;
+    padding: 7px 16px;
     border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--glass);
+    border: 1px solid var(--liquid-border);
+    background: var(--liquid-glass);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--liquid-specular);
     font-size: 12px;
     font-weight: 800;
-    color: var(--text-main);
+    color: var(--accent);
+    letter-spacing: 0.6px;
     margin-bottom: 1.5rem;
+}
+
+.hero-badge .dot {
+    color: var(--accent);
+    font-size: 14px;
 }
 
 .hero h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
     font-weight: 800;
-    line-height: 1.05;
+    line-height: 1.1;
     margin-bottom: 1.25rem;
     color: var(--text-title);
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, var(--accent), #fff0a3 60%, var(--accent-hover));
+    background: linear-gradient(135deg, var(--accent), #FFE57F 55%, var(--accent-hover));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -345,9 +471,9 @@ header.scrolled {
 
 .hero p {
     color: var(--text-muted);
-    font-size: 1.1rem;
+    font-size: 1.08rem;
     line-height: 1.7;
-    max-width: 480px;
+    max-width: 520px;
     margin-bottom: 2rem;
 }
 
@@ -363,119 +489,258 @@ header.scrolled {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    min-height: 50px;
-    padding: 13px 24px;
-    border-radius: 15px;
-    border: 1px solid transparent;
-    background: linear-gradient(135deg, var(--accent), #fff0a3 60%, var(--accent-hover));
+    min-height: 52px;
+    padding: 14px 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, var(--accent), #FFE57F 60%, var(--accent-hover));
     color: #111;
-    font-weight: 900;
+    font-weight: 800;
     text-decoration: none;
-    font-size: 14.5px;
-    box-shadow: 0 12px 28px var(--accent-light);
+    font-size: 15px;
+    box-shadow: 0 12px 30px var(--accent-glow), inset 0 1px 1px rgba(255, 255, 255, 0.8);
     cursor: pointer;
-    transition: filter var(--transition), transform var(--transition);
+    transition: all var(--transition);
 }
 
 .cta-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 18px 36px var(--accent-glow);
     filter: brightness(1.05);
-    transform: translateY(-2px);
 }
 
 .cta-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 50px;
-    padding: 13px 24px;
-    border-radius: 15px;
-    background: var(--surface);
-    color: var(--text-main);
-    border: 1px solid var(--glass-br);
-    box-shadow: var(--shadow-soft);
+    min-height: 52px;
+    padding: 14px 26px;
+    border-radius: 16px;
+    background: var(--liquid-glass);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    color: var(--text-title);
+    border: 1.5px solid var(--liquid-border);
+    box-shadow: var(--liquid-specular), var(--shadow-sm);
     font-weight: 700;
-    font-size: 14.5px;
+    font-size: 15px;
     transition: all var(--transition);
 }
 
 .cta-outline:hover {
     border-color: var(--accent);
     color: var(--accent);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    background: var(--surface-solid);
+    box-shadow: var(--shadow-md);
 }
 
 .hero-stats {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    background: var(--liquid-glass);
+    border: 1px solid var(--liquid-border);
+    box-shadow: var(--liquid-specular);
+    border-radius: 18px;
+    padding: 1rem 1.5rem;
+    backdrop-filter: blur(12px);
+    width: fit-content;
 }
 
 .stat { display: flex; flex-direction: column; gap: 0; }
-.stat strong { font-family: var(--font-display); font-size: 1.3rem; color: var(--text-title); line-height: 1; }
-.stat span { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-.stat-divider { width: 1px; height: 32px; background: var(--border); }
+.stat strong { font-family: var(--font-display); font-size: 1.25rem; color: var(--text-title); line-height: 1.1; font-weight: 800; }
+.stat span { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 600; margin-top: 2px; }
+.stat-divider { width: 1px; height: 30px; background: var(--border); }
 
-/* Hero Visual — Floating Cards */
+/* --- Hero Visual (3D Liquid Glass Showcase) --- */
 .hero-visual {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.hero-card-stack {
     position: relative;
-    width: 300px;
-    height: 300px;
 }
 
-.hero-big-icon {
-    position: absolute;
-    inset: 0;
+.hero-glass-showcase {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 8rem;
-    opacity: 0.05;
-    user-select: none;
 }
 
+.showcase-glow-ring {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    filter: blur(35px);
+    z-index: 0;
+    animation: pulseRing 6s infinite alternate ease-in-out;
+}
+
+@keyframes pulseRing {
+    0% { transform: scale(0.9); opacity: 0.5; }
+    100% { transform: scale(1.15); opacity: 0.9; }
+}
+
+.showcase-main-card {
+    background: var(--liquid-glass-card);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    border: 1.5px solid var(--liquid-border);
+    box-shadow: var(--liquid-specular), var(--liquid-shadow);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 330px;
+    position: relative;
+    z-index: 2;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.showcase-main-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--liquid-specular), var(--shadow-lg);
+    border-color: var(--border-active);
+}
+
+.showcase-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: #111;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px var(--accent-glow);
+    margin-bottom: 1rem;
+}
+
+.showcase-img-wrap {
+    height: 180px;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--liquid-border);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-theme="onyx"] .showcase-img-wrap {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.showcase-img {
+    max-height: 90%;
+    max-width: 90%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.showcase-main-card:hover .showcase-img {
+    transform: scale(1.08);
+}
+
+.showcase-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+}
+
+.showcase-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-title);
+}
+
+.showcase-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.showcase-price-tag {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.showcase-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.showcase-rating {
+    color: var(--gold);
+    font-weight: 700;
+}
+
+/* Floating Frosted Glass Chips */
 .floating-card {
     position: absolute;
-    background: var(--glass);
-    border: 1px solid var(--glass-br);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--liquid-glass-card);
+    border: 1.5px solid var(--liquid-border);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    box-shadow: var(--liquid-specular), var(--liquid-shadow);
     border-radius: 18px;
-    padding: 0.85rem 1.25rem;
+    padding: 0.75rem 1.15rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    box-shadow: var(--shadow-md);
-    min-width: 175px;
+    min-width: 165px;
+    z-index: 3;
+    transition: all var(--transition);
 }
 
-.fc-icon { font-size: 2rem; }
-.fc-name { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; }
-.fc-price { font-size: 1rem; color: var(--text-title); font-weight: 800; font-family: var(--font-display); }
+.floating-card:hover {
+    transform: scale(1.06) !important;
+    border-color: var(--accent);
+    box-shadow: 0 16px 36px var(--accent-glow);
+}
 
-.fc1 { top: 15px; left: 10px; animation: float1 4s ease-in-out infinite; }
-.fc2 { top: 50%; right: 0; transform: translateY(-50%); animation: float2 5s ease-in-out infinite; }
-.fc3 { bottom: 15px; left: 30px; animation: float1 4.5s ease-in-out infinite reverse; }
+.fc-icon { font-size: 1.8rem; }
+.fc-name { font-size: 0.82rem; color: var(--text-muted); font-weight: 600; }
+.fc-price { font-size: 0.95rem; color: var(--text-title); font-weight: 800; font-family: var(--font-display); }
+
+.fc1 { top: -20px; left: -25px; animation: float1 4.5s ease-in-out infinite; }
+.fc2 { top: 52%; right: -30px; animation: float2 5.5s ease-in-out infinite; }
+.fc3 { bottom: -20px; left: -10px; animation: float1 5s ease-in-out infinite reverse; }
 
 @keyframes float1 {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-12px); }
 }
 @keyframes float2 {
-    0%, 100% { transform: translateY(-50%); }
-    50% { transform: translateY(calc(-50% - 10px)); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
 /* =====================================================
-   CATEGORIES SECTION
+   CATEGORIES SECTION (LIQUID GLASS)
    ===================================================== */
 .categories-section {
-    padding: 5rem 0 3rem;
+    padding: 4rem 0 3rem;
+    position: relative;
+    z-index: 1;
 }
 
 .section-title {
@@ -484,52 +749,57 @@ header.scrolled {
     font-weight: 800;
     color: var(--text-title);
     margin-bottom: 1.75rem;
-    letter-spacing: -0.045em;
+    letter-spacing: -0.04em;
 }
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1.4rem;
 }
 
 .cat-card {
     border-radius: var(--radius);
-    padding: 2rem 1.5rem;
+    padding: 2.2rem 1.6rem;
     cursor: pointer;
-    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    transition: all var(--transition);
     position: relative;
     overflow: hidden;
     text-align: center;
-    border: 1px solid var(--glass-br);
-    background: var(--card);
-    box-shadow: var(--shadow-soft);
+    border: 1.5px solid var(--liquid-border);
+    background: var(--liquid-glass-card);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    box-shadow: var(--liquid-specular), var(--shadow-sm);
 }
 
 .cat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--accent);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--liquid-specular), var(--shadow-lg);
+    border-color: var(--border-active);
 }
 
-.cat-icon { font-size: 3rem; margin-bottom: 0.75rem; }
-.cat-label { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--text-title); }
-.cat-sub { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
+.cat-icon { font-size: 2.8rem; margin-bottom: 0.85rem; transition: transform var(--transition); }
+.cat-card:hover .cat-icon { transform: scale(1.15) rotate(5deg); }
+.cat-label { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: var(--text-title); }
+.cat-sub { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem; }
 
 /* =====================================================
-   PRODUCTS SECTION
+   PRODUCTS SECTION (LIQUID GLASS CARDS)
    ===================================================== */
 .products-section {
-    padding: 2rem 0 5rem;
+    padding: 3rem 0 5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 2.2rem;
 }
 
 .filter-row {
@@ -541,17 +811,20 @@ header.scrolled {
 
 .filter-pills {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.6rem;
     flex-wrap: wrap;
 }
 
 .pill {
-    padding: 0.45rem 1.1rem;
-    border: 1.5px solid var(--border);
-    background: var(--surface);
+    padding: 0.55rem 1.25rem;
+    border: 1.5px solid var(--liquid-border);
+    background: var(--liquid-glass);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    box-shadow: var(--liquid-specular);
     border-radius: 9999px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.88rem;
+    font-weight: 700;
     color: var(--text-muted);
     cursor: pointer;
     transition: all var(--transition);
@@ -559,50 +832,38 @@ header.scrolled {
 }
 
 .pill:hover, .pill.active {
-    background: linear-gradient(135deg, var(--accent), #fff0a3 60%, var(--accent-hover));
+    background: linear-gradient(135deg, var(--accent), #FFE57F 60%, var(--accent-hover));
     color: #111;
     border-color: transparent;
-    font-weight: 800;
+    box-shadow: 0 6px 20px var(--accent-glow);
+    transform: translateY(-2px);
 }
-
-.sort-select-wrap select {
-    padding: 0.45rem 1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 9999px;
-    font-size: 0.88rem;
-    font-family: var(--font-body);
-    color: var(--text-muted);
-    background: var(--surface);
-    outline: none;
-    cursor: pointer;
-    transition: border-color var(--transition);
-}
-
-.sort-select-wrap select:focus { border-color: var(--accent); }
 
 /* Product Grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
+    gap: 1.75rem;
 }
 
 .product-card {
-    background: var(--card);
+    background: var(--liquid-glass-card);
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid var(--glass-br);
+    box-shadow: var(--liquid-specular), var(--shadow-sm);
+    border: 1.5px solid var(--liquid-border);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    transition: all var(--transition);
     position: relative;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-7px) scale(1.015);
+    border-color: var(--border-active);
+    box-shadow: var(--liquid-specular), var(--shadow-lg);
 }
 
 .product-card .badge {
@@ -613,59 +874,65 @@ header.scrolled {
     color: #111;
     font-size: 0.72rem;
     font-weight: 900;
-    padding: 0.25rem 0.65rem;
-    border-radius: 8px;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-shadow: 0 4px 12px var(--accent-glow);
+    z-index: 2;
 }
 
 .product-card .badge.new {
     background: var(--success);
     color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 
 .product-img {
-    height: 200px;
-    background: #1C1C1E;
+    height: 210px;
+    background: rgba(0, 0, 0, 0.04);
     overflow: hidden;
     position: relative;
-    border-bottom: 1px solid var(--glass-br);
+    border-bottom: 1px solid var(--liquid-border);
+}
+
+[data-theme="onyx"] .product-img {
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .product-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.45s ease;
 }
 
 .product-card:hover .product-img img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .product-info {
-    padding: 1.25rem;
+    padding: 1.35rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.4rem;
 }
 
 .product-category {
     font-size: 0.75rem;
     color: var(--accent);
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.7px;
 }
 
 .product-title {
     font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1.08rem;
+    font-weight: 800;
     color: var(--text-title);
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
 .product-rating {
@@ -682,12 +949,12 @@ header.scrolled {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
 }
 
 .product-price {
     font-family: var(--font-display);
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 800;
     color: var(--accent);
 }
@@ -700,13 +967,15 @@ header.scrolled {
 
 .add-to-cart {
     margin-top: auto;
-    padding: 0.75rem;
-    border: 1.5px solid var(--glass-br);
-    background: var(--glass);
-    color: var(--text-main);
-    font-weight: 700;
-    font-size: 0.9rem;
-    border-radius: 12px;
+    padding: 0.8rem;
+    border: 1.5px solid var(--liquid-border);
+    background: var(--liquid-glass);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--liquid-specular);
+    color: var(--text-title);
+    font-weight: 800;
+    font-size: 0.92rem;
+    border-radius: 14px;
     transition: all var(--transition);
     font-family: var(--font-body);
     display: flex;
@@ -717,9 +986,11 @@ header.scrolled {
 }
 
 .add-to-cart:hover {
-    background: linear-gradient(135deg, var(--accent), #fff0a3 60%, var(--accent-hover));
+    background: linear-gradient(135deg, var(--accent), #FFE57F 60%, var(--accent-hover));
     color: #111;
     border-color: transparent;
+    box-shadow: 0 8px 22px var(--accent-glow);
+    transform: translateY(-2px);
 }
 
 .add-to-cart.added {
@@ -741,10 +1012,13 @@ header.scrolled {
    TRUST BANNER
    ===================================================== */
 .trust-banner {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 3rem 0;
+    background: var(--liquid-glass-card);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    border-top: 1.5px solid var(--liquid-border);
+    border-bottom: 1.5px solid var(--liquid-border);
+    box-shadow: var(--liquid-specular);
+    padding: 3.5rem 0;
     margin-bottom: 0;
 }
 
@@ -2043,3 +2317,409 @@ footer {
     color: #ffda6a; /* Goldish crescent color similar to screenshot */
 }
 
+/* =====================================================
+   ADDITIONAL MODERN UI SECTIONS (FEATURES, STEPS, REVIEWS, FAQ)
+   ===================================================== */
+
+.section-header-center {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 3rem;
+}
+
+.section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.8rem;
+}
+
+.section-sub {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: -0.8rem;
+}
+
+/* --- Features / Value Props (Liquid Glass) --- */
+.features-section {
+    padding: 3rem 0 4.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.6rem;
+}
+
+.feature-card {
+    background: var(--liquid-glass-card);
+    border: 1.5px solid var(--liquid-border);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    border-radius: var(--radius);
+    padding: 2.2rem 1.8rem;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--liquid-specular), var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--border-active);
+    box-shadow: var(--liquid-specular), var(--shadow-lg);
+}
+
+.feature-icon-box {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: var(--liquid-glass);
+    border: 1.5px solid var(--liquid-border);
+    box-shadow: var(--liquid-specular);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.feature-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-title);
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+/* --- Steps / How It Works (Liquid Glass) --- */
+.steps-section {
+    padding: 4.5rem 0;
+    background: var(--liquid-glass);
+    border-top: 1.5px solid var(--liquid-border);
+    border-bottom: 1.5px solid var(--liquid-border);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    box-shadow: var(--liquid-specular);
+    position: relative;
+    z-index: 1;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    position: relative;
+}
+
+.step-card {
+    background: var(--liquid-glass-card);
+    border: 1.5px solid var(--liquid-border);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    box-shadow: var(--liquid-specular), var(--shadow-sm);
+    border-radius: var(--radius);
+    padding: 2.4rem 2rem;
+    position: relative;
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.step-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--border-active);
+    box-shadow: var(--liquid-specular), var(--shadow-lg);
+}
+
+.step-number {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--accent);
+    opacity: 0.35;
+    line-height: 1;
+}
+
+.step-icon {
+    font-size: 2.4rem;
+}
+
+.step-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-title);
+}
+
+.step-card p {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+/* --- Testimonials / Customer Reviews (Liquid Glass) --- */
+.testimonials-section {
+    padding: 5rem 0 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.8rem;
+}
+
+.testimonial-card {
+    background: var(--liquid-glass-card);
+    border: 1.5px solid var(--liquid-border);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    box-shadow: var(--liquid-specular), var(--shadow-sm);
+    border-radius: var(--radius);
+    padding: 2.4rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.3rem;
+    transition: all var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--border-active);
+    box-shadow: var(--liquid-specular), var(--shadow-lg);
+}
+
+.testimonial-rating {
+    display: flex;
+    gap: 4px;
+    color: #F59E0B;
+    font-size: 1.15rem;
+}
+
+.testimonial-text {
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.author-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--liquid-glass);
+    border: 1.5px solid var(--accent);
+    box-shadow: 0 4px 10px var(--accent-glow);
+    color: var(--accent);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    font-family: var(--font-display);
+}
+
+.author-info h4 {
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text-title);
+}
+
+.author-info span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.verified-badge {
+    color: #10B981;
+    font-weight: 800;
+}
+
+/* --- FAQ Accordion (Liquid Glass) --- */
+.faq-section {
+    padding: 4rem 0 5.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-grid {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.faq-item {
+    background: var(--liquid-glass-card);
+    border: 1.5px solid var(--liquid-border);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    box-shadow: var(--liquid-specular), var(--shadow-sm);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.faq-item:hover {
+    border-color: var(--border-active);
+    transform: translateY(-2px);
+}
+
+.faq-item[open] {
+    border-color: var(--accent);
+    box-shadow: var(--liquid-specular), var(--shadow-md);
+}
+
+.faq-question {
+    padding: 1.35rem 1.6rem;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-title);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-icon {
+    font-size: 1.3rem;
+    transition: transform var(--transition);
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 1.6rem 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+/* --- WhatsApp Call To Action Banner (Liquid Emerald Glass) --- */
+.whatsapp-banner {
+    padding: 3rem 0 5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.whatsapp-card {
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.18), rgba(18, 140, 126, 0.1)), var(--liquid-glass-card);
+    border: 1.5px solid rgba(37, 211, 102, 0.45);
+    backdrop-filter: var(--liquid-blur);
+    -webkit-backdrop-filter: var(--liquid-blur);
+    box-shadow: var(--liquid-specular), 0 20px 50px rgba(37, 211, 102, 0.15);
+    border-radius: var(--radius-lg);
+    padding: clamp(2rem, 4vw, 3.8rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.whatsapp-content {
+    max-width: 600px;
+}
+
+.whatsapp-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 800;
+    color: var(--text-title);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.whatsapp-content p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-weight: 800;
+    padding: 1.1rem 2rem;
+    border-radius: 16px;
+    font-size: 1.05rem;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    transition: all var(--transition);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.whatsapp-btn:hover {
+    background: #20BA56;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 32px rgba(37, 211, 102, 0.5);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-card {
+        text-align: center;
+        justify-content: center;
+    }
+    .whatsapp-content h2 {
+        justify-content: center;
+    }
+    .whatsapp-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
