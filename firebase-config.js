@@ -19,3 +19,10 @@ if (typeof firebase !== 'undefined') {
 } else {
     console.error("Firebase SDK not loaded before firebase-config.js");
 }
+
+// Dynamic Products Configuration (JSONBin & Cloudinary)
+const CONFIG = {
+    JSONBIN_BIN_ID: "6a878f98f5f4af5e292ef4d1",
+    CLOUDINARY_CLOUD_NAME: "uhslxg9a",
+    CLOUDINARY_API_KEY: "545648133778833"
+};

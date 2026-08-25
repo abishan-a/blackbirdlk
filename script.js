@@ -3,7 +3,7 @@
    ===================================================== */
 
 // ─── Product Data ────────────────────────────────────
-const products = [
+const defaultProducts = [
     {
         id: 1,
         name: "Men's Silver Lion Ring",
@@ -823,7 +823,6 @@ const products = [
    { id: 51, name: "Hotwheel F1 racing car", category: "Electronics", price: 8500, original: 9000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/redbull.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
 
    { id: 52, name: "Hotwheel F1 racing car", category: "Electronics", price: 8500, original: 9000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/Atlassian.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
-
    { id: 53, name: "Hotwheel F1 racing car", category: "Electronics", price: 8500, original: 9000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/kik.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
 
    { id: 54, name: "Hotwheel F1 racing car", category: "Electronics", price: 8500, original: 9000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/benz.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
@@ -831,61 +830,60 @@ const products = [
    { id: 55, name: "Hotwheel F1 racing car", category: "Electronics", price: 8500, original: 9000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/McLaren.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
    
    { id: 56, name: "Hotwheel F1 racing car", category: "Electronics", price: 8500, original: 9000, badge: "new", rating: 5.0, reviews: 0, freeDelivery: true, img: "product_img/racingbulls.jpg", details: { description: "Original ", material: "Standard", style: "Modern", finish: "Matte Finish", occasion: "Casual", sizes: ["Standard"], highlights: [ "🚚 FREE delivery to Vavuniya", "💵 Cash on Delivery available", "🎁 Great for gifting" ] } },
+    {
+         id: 57,
+         name: "Lamborghini mini car",
+         category: "Electronics",
+         price: 8500,
+         original: 12000,
+         badge: "new",
+         rating: 5.0,
+         reviews: 0,
+         freeDelivery: true,
+         img: "product_img/Lamborghini mini car.jpg",
+         details: {
+             description: "✨ Features: Lamborghini   ✅ Doors can be opened ✅ Working front and rear lights ✅ Realistic engine sound effects ✅ Premium die-cast metal body ✅ Rubber tyres",
+             material: "Steal",
+             style: "Modern",
+             finish: "Matte Finish",
+             occasion: "Casual",
+             sizes: ["Standard"],
+             highlights: [
+                 "🚚 FREE delivery to Vavuniya",
+                 "💵 Cash on Delivery available",
+                 "🎁 Great for gifting"
+             ]
+         }
+    },
 
-   {
-        id: 57,
-        name: "Lamborghini mini car",
-        category: "Electronics",
-        price: 8500,
-        original: 12000,
-        badge: "new",
-        rating: 5.0,
-        reviews: 0,
-        freeDelivery: true,
-        img: "product_img/Lamborghini mini car.jpg",
-        details: {
-            description: "✨ Features: Lamborghini   ✅ Doors can be opened ✅ Working front and rear lights ✅ Realistic engine sound effects ✅ Premium die-cast metal body ✅ Rubber tyres",
-            material: "Steal",
-            style: "Modern",
-            finish: "Matte Finish",
-            occasion: "Casual",
-            sizes: ["Standard"],
-            highlights: [
-                "🚚 FREE delivery to Vavuniya",
-                "💵 Cash on Delivery available",
-                "🎁 Great for gifting"
-            ]
-        }
-   },
-
-   {
-        id: 58,
-        name: "Bmw mini car",
-        category: "Electronics",
-        price: 9000,
-        original: 12000,
-        badge: "new",
-        rating: 5.0,
-        reviews: 0,
-        freeDelivery: true,
-        img: "product_img/Bmw mini car.jpg",
-        details: {
-            description: "✨ Features: BMW 530li(Officially Licensed)  ✅ Doors can be opened ✅ Working front and rear lights ❌ No engine sound ✅ Premium die-cast metal body ✅ Rubber tyres",
-            material: "Steal",
-            style: "Modern",
-            finish: "Matte Finish",
-            occasion: "Casual",
-            sizes: ["Standard"],
-            highlights: [
-                "🚚 FREE delivery to Vavuniya",
-                "💵 Cash on Delivery available",
-                "🎁 Great for gifting"
-            ]
-        }
-   }
-
-   
+    {
+         id: 58,
+         name: "Bmw mini car",
+         category: "Electronics",
+         price: 9000,
+         original: 12000,
+         badge: "new",
+         rating: 5.0,
+         reviews: 0,
+         freeDelivery: true,
+         img: "product_img/Bmw mini car.jpg",
+         details: {
+             description: "✨ Features: BMW 530li(Officially Licensed)  ✅ Doors can be opened ✅ Working front and rear lights ❌ No engine sound ✅ Premium die-cast metal body ✅ Rubber tyres",
+             material: "Steal",
+             style: "Modern",
+             finish: "Matte Finish",
+             occasion: "Casual",
+             sizes: ["Standard"],
+             highlights: [
+                 "🚚 FREE delivery to Vavuniya",
+                 "💵 Cash on Delivery available",
+                 "🎁 Great for gifting"
+             ]
+         }
+    }
 ];
+
+let products = [];
 
 // ─── Fisher-Yates Shuffle (with Spiderman mask pinned at top) ────
 function shuffle(array) {
@@ -902,7 +900,34 @@ function shuffle(array) {
         array.unshift(pinItem);
     }
 }
-shuffle(products);
+
+// ─── Load Dynamic Products from JSONBin.io ─────────────────
+async function loadDynamicProducts() {
+    try {
+        const binId = (typeof CONFIG !== 'undefined') ? CONFIG.JSONBIN_BIN_ID : null;
+        if (!binId) {
+            console.warn('CONFIG.JSONBIN_BIN_ID not defined. Using default local products.');
+            products = [...defaultProducts];
+            shuffle(products);
+            return;
+        }
+        const response = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        if (data && data.record) {
+            products = data.record;
+            console.log(`Loaded ${products.length} products dynamically from JSONBin.io`);
+        } else {
+            throw new Error('Invalid JSONBin response format');
+        }
+    } catch (error) {
+        console.error('Error fetching dynamic products, falling back to default local products:', error);
+        products = [...defaultProducts];
+    }
+    shuffle(products);
+}
 
 // ─── State ────────────────────────────────────────────
 let cart = JSON.parse(localStorage.getItem('bb-cart') || '[]');
@@ -946,9 +971,12 @@ const reviewItemsEl   = document.getElementById('review-items');
 const reviewTotalEl   = document.getElementById('review-total');
 
 // ─── Init ─────────────────────────────────────────────
-function init() {
+async function init() {
     // Disable right click globally
     document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // Load dynamic products from database
+    await loadDynamicProducts();
 
     // Parse category from URL
     const urlParams = new URLSearchParams(window.location.search);
