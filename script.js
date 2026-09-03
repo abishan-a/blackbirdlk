@@ -883,755 +883,2481 @@ const defaultProducts = [
     }
 ];
 
+/* =====================================================
+   VAVUNIYA STORE — script.js
+   SRI LANKA-WIDE DELIVERY VERSION
+   ===================================================== */
+
+/*
+   IMPORTANT:
+   Keep your existing `defaultProducts` array above this line.
+   It contains your 58 products.
+
+   This code starts from:
+       let products = [];
+
+   and replaces everything below it.
+*/
+
 let products = [];
 
-// ─── Fisher-Yates Shuffle (with Spiderman mask pinned at top) ────
+// ─── Sri Lanka Districts ─────────────────────────────
+const sriLankaDistricts = [
+    "Ampara",
+    "Anuradhapura",
+    "Badulla",
+    "Batticaloa",
+    "Colombo",
+    "Galle",
+    "Gampaha",
+    "Hambantota",
+    "Jaffna",
+    "Kalutara",
+    "Kandy",
+    "Kegalle",
+    "Kilinochchi",
+    "Kurunegala",
+    "Mannar",
+    "Matale",
+    "Matara",
+    "Monaragala",
+    "Mullaitivu",
+    "Nuwara Eliya",
+    "Polonnaruwa",
+    "Puttalam",
+    "Ratnapura",
+    "Trincomalee",
+    "Vavuniya"
+];
+
+// ─── Delivery Settings ───────────────────────────────
+const DELIVERY_FEE = 300;
+const DELIVERY_COUNTRY = "Sri Lanka";
+
+// ─── Fisher-Yates Shuffle ────────────────────────────
 function shuffle(array) {
     const pinIndex = array.findIndex(p => p.id === 15);
+
     let pinItem = null;
+
     if (pinIndex !== -1) {
         pinItem = array.splice(pinIndex, 1)[0];
     }
+
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+
     if (pinItem) {
         array.unshift(pinItem);
     }
 }
 
-// ─── Load Dynamic Products from JSONBin.io ─────────────────
+// ─── Load Dynamic Products from JSONBin.io ───────────
 async function loadDynamicProducts() {
     try {
-        const binId = (typeof CONFIG !== 'undefined') ? CONFIG.JSONBIN_BIN_ID : null;
+        const binId =
+            (typeof CONFIG !== 'undefined')
+                ? CONFIG.JSONBIN_BIN_ID
+                : null;
+
         if (!binId) {
-            console.warn('CONFIG.JSONBIN_BIN_ID not defined. Using default local products.');
+            console.warn(
+                'CONFIG.JSONBIN_BIN_ID not defined. Using default local products.'
+            );
+
             products = [...defaultProducts];
             shuffle(products);
             return;
         }
-        const response = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`);
+
+        const response = await fetch(
+            `https://api.jsonbin.io/v3/b/${binId}/latest`
+        );
+
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(
+                `HTTP error! Status: ${response.status}`
+            );
         }
+
         const data = await response.json();
+
         if (data && data.record) {
             products = data.record;
-            console.log(`Loaded ${products.length} products dynamically from JSONBin.io`);
+
+            console.log(
+                `Loaded ${products.length} products dynamically from JSONBin.io`
+            );
         } else {
-            throw new Error('Invalid JSONBin response format');
+            throw new Error(
+                'Invalid JSONBin response format'
+            );
         }
+
     } catch (error) {
-        console.error('Error fetching dynamic products, falling back to default local products:', error);
+        console.error(
+            'Error fetching dynamic products. Using local products:',
+            error
+        );
+
         products = [...defaultProducts];
     }
+
     shuffle(products);
 }
 
-// ─── State ────────────────────────────────────────────
-let cart = JSON.parse(localStorage.getItem('bb-cart') || '[]');
+// ─── State ───────────────────────────────────────────
+let cart = JSON.parse(
+    localStorage.getItem('bb-cart') || '[]'
+);
+
 let currentFilter = 'All';
 let currentSort = 'default';
 let searchQuery = '';
 
-// ─── Persist cart to localStorage ─────────────────────
+// ─── Save Cart ───────────────────────────────────────
 function saveCart() {
-    localStorage.setItem('bb-cart', JSON.stringify(cart));
+    localStorage.setItem(
+        'bb-cart',
+        JSON.stringify(cart)
+    );
 }
 
-// ─── DOM References ───────────────────────────────────
-const productGrid     = document.getElementById('product-grid');
-const cartIcon        = document.getElementById('cart-icon');
-const cartOverlay     = document.getElementById('cart-overlay');
-const closeCartBtn    = document.getElementById('close-cart');
-const cartItemsEl     = document.getElementById('cart-items');
-const cartCountEl     = document.getElementById('cart-count');
-const cartTotalPriceEl = document.getElementById('cart-total-price');
-const checkoutBtn     = document.getElementById('checkout-btn');
-const checkoutModal   = document.getElementById('checkout-modal');
-const cancelCheckout  = document.getElementById('cancel-checkout');
-const checkoutForm    = document.getElementById('checkout-form');
-const filterPillsEl   = document.getElementById('filter-pills');
-const sortSelect      = document.getElementById('sort-select');
-const searchInput     = document.getElementById('search-input');
-const noResultsEl     = document.getElementById('no-results');
-const toastEl         = document.getElementById('toast');
+// ─── DOM References ──────────────────────────────────
+const productGrid =
+    document.getElementById('product-grid');
 
-// Checkout Step elements
-const step1El         = document.getElementById('step-1');
-const step2El         = document.getElementById('step-2');
-const step1Ind        = document.getElementById('step1-indicator');
-const step2Ind        = document.getElementById('step2-indicator');
-const btnNext         = document.getElementById('btn-next');
-const btnBack         = document.getElementById('btn-back');
-const btnConfirm      = document.getElementById('btn-confirm');
-const reviewAddressEl = document.getElementById('review-address');
-const reviewItemsEl   = document.getElementById('review-items');
-const reviewTotalEl   = document.getElementById('review-total');
+const cartIcon =
+    document.getElementById('cart-icon');
+
+const cartOverlay =
+    document.getElementById('cart-overlay');
+
+const closeCartBtn =
+    document.getElementById('close-cart');
+
+const cartItemsEl =
+    document.getElementById('cart-items');
+
+const cartCountEl =
+    document.getElementById('cart-count');
+
+const cartTotalPriceEl =
+    document.getElementById('cart-total-price');
+
+const checkoutBtn =
+    document.getElementById('checkout-btn');
+
+const checkoutModal =
+    document.getElementById('checkout-modal');
+
+const cancelCheckout =
+    document.getElementById('cancel-checkout');
+
+const checkoutForm =
+    document.getElementById('checkout-form');
+
+const filterPillsEl =
+    document.getElementById('filter-pills');
+
+const sortSelect =
+    document.getElementById('sort-select');
+
+const searchInput =
+    document.getElementById('search-input');
+
+const noResultsEl =
+    document.getElementById('no-results');
+
+const toastEl =
+    document.getElementById('toast');
+
+// ─── Checkout Step Elements ──────────────────────────
+const step1El =
+    document.getElementById('step-1');
+
+const step2El =
+    document.getElementById('step-2');
+
+const step1Ind =
+    document.getElementById('step1-indicator');
+
+const step2Ind =
+    document.getElementById('step2-indicator');
+
+const btnNext =
+    document.getElementById('btn-next');
+
+const btnBack =
+    document.getElementById('btn-back');
+
+const btnConfirm =
+    document.getElementById('btn-confirm');
+
+const reviewAddressEl =
+    document.getElementById('review-address');
+
+const reviewItemsEl =
+    document.getElementById('review-items');
+
+const reviewTotalEl =
+    document.getElementById('review-total');
+
+// ─── Setup Sri Lanka District Dropdown ───────────────
+function setupSriLankaDeliveryAreas() {
+
+    const areaEl =
+        document.getElementById('c-area');
+
+    if (!areaEl) {
+        console.warn(
+            'Checkout area field #c-area was not found.'
+        );
+        return;
+    }
+
+    /*
+       If c-area is a SELECT dropdown, automatically
+       replace its options with all 25 Sri Lankan districts.
+    */
+    if (areaEl.tagName.toLowerCase() === 'select') {
+
+        areaEl.innerHTML = `
+            <option value="">
+                Select your district
+            </option>
+
+            ${sriLankaDistricts.map(district => `
+                <option value="${district}">
+                    ${district}
+                </option>
+            `).join('')}
+        `;
+
+    }
+
+    areaEl.setAttribute(
+        'aria-label',
+        'Select your Sri Lankan district'
+    );
+}
 
 // ─── Init ─────────────────────────────────────────────
 async function init() {
-    // Disable right click globally
-    document.addEventListener('contextmenu', e => e.preventDefault());
 
-    // Load dynamic products from database
+    // Setup Sri Lanka-wide delivery
+    setupSriLankaDeliveryAreas();
+
+    // Disable right click
+    document.addEventListener(
+        'contextmenu',
+        e => e.preventDefault()
+    );
+
+    // Load products
     await loadDynamicProducts();
 
     // Parse category from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const categoryParam = urlParams.get('category');
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const categoryParam =
+        urlParams.get('category');
+
     if (categoryParam) {
-        currentFilter = categoryParam;
-        // Update active filter pill
-        document.querySelectorAll('.pill').forEach(p => {
-            p.classList.toggle('active', p.dataset.filter === currentFilter);
-        });
+
+        currentFilter =
+            categoryParam;
+
+        document
+            .querySelectorAll('.pill')
+            .forEach(p => {
+
+                p.classList.toggle(
+                    'active',
+                    p.dataset.filter === currentFilter
+                );
+
+            });
     }
 
     renderProducts();
     updateCart();
 
-    // Sticky header shadow on scroll
-    window.addEventListener('scroll', () => {
-        document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 10);
-    });
+    // Sticky header
+    window.addEventListener(
+        'scroll',
+        () => {
 
-    // Cart open/close
-    cartIcon.addEventListener('click', () => cartOverlay.classList.add('active'));
-    closeCartBtn.addEventListener('click', () => cartOverlay.classList.remove('active'));
-    cartOverlay.addEventListener('click', (e) => {
-        if (e.target === cartOverlay) cartOverlay.classList.remove('active');
-    });
+            const header =
+                document.getElementById(
+                    'main-header'
+                );
 
-    // Filter pills (event delegation)
-    filterPillsEl?.addEventListener('click', (e) => {
-        if (!e.target.matches('.pill')) return;
-        document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-        e.target.classList.add('active');
-        currentFilter = e.target.dataset.filter;
-        renderProducts();
-    });
+            if (header) {
+                header.classList.toggle(
+                    'scrolled',
+                    window.scrollY > 10
+                );
+            }
 
-    // Category cards
-    document.querySelectorAll('.cat-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const filter = card.dataset.filter;
-            if (!document.querySelector('.products-page-main')) {
-                window.location.href = `products.html?category=${encodeURIComponent(filter)}`;
+        }
+    );
+
+    // Cart open
+    cartIcon?.addEventListener(
+        'click',
+        () => {
+            cartOverlay?.classList.add('active');
+        }
+    );
+
+    // Cart close
+    closeCartBtn?.addEventListener(
+        'click',
+        () => {
+            cartOverlay?.classList.remove('active');
+        }
+    );
+
+    // Close cart by clicking background
+    cartOverlay?.addEventListener(
+        'click',
+        e => {
+
+            if (e.target === cartOverlay) {
+                cartOverlay.classList.remove(
+                    'active'
+                );
+            }
+
+        }
+    );
+
+    // Filter pills
+    filterPillsEl?.addEventListener(
+        'click',
+        e => {
+
+            if (!e.target.matches('.pill')) {
                 return;
             }
-            document.querySelectorAll('.pill').forEach(p => {
-                p.classList.toggle('active', p.dataset.filter === filter);
-            });
-            currentFilter = filter;
+
+            document
+                .querySelectorAll('.pill')
+                .forEach(p =>
+                    p.classList.remove('active')
+                );
+
+            e.target.classList.add('active');
+
+            currentFilter =
+                e.target.dataset.filter;
+
             renderProducts();
-            document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
+        }
+    );
+
+    // Category cards
+    document
+        .querySelectorAll('.cat-card')
+        .forEach(card => {
+
+            card.addEventListener(
+                'click',
+                () => {
+
+                    const filter =
+                        card.dataset.filter;
+
+                    if (
+                        !document.querySelector(
+                            '.products-page-main'
+                        )
+                    ) {
+
+                        window.location.href =
+                            `products.html?category=${encodeURIComponent(filter)}`;
+
+                        return;
+                    }
+
+                    document
+                        .querySelectorAll('.pill')
+                        .forEach(p => {
+
+                            p.classList.toggle(
+                                'active',
+                                p.dataset.filter === filter
+                            );
+
+                        });
+
+                    currentFilter = filter;
+
+                    renderProducts();
+
+                    document
+                        .getElementById(
+                            'products-section'
+                        )
+                        ?.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                }
+            );
         });
-    });
 
     // Sort
-    sortSelect?.addEventListener('change', (e) => {
-        currentSort = e.target.value;
-        renderProducts();
-    });
+    sortSelect?.addEventListener(
+        'change',
+        e => {
+
+            currentSort =
+                e.target.value;
+
+            renderProducts();
+        }
+    );
 
     // Search
     let searchTimeout;
-    searchInput?.addEventListener('input', (e) => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            searchQuery = e.target.value.trim().toLowerCase();
-            renderProducts();
-        }, 250);
-    });
 
-    // CTA btn — navigates to products.html (handled by href)
+    searchInput?.addEventListener(
+        'input',
+        e => {
 
-    // Checkout open
-    checkoutBtn?.addEventListener('click', () => {
-        if (cart.length === 0) {
-            showToast('🛒 Your cart is empty!');
-            return;
+            clearTimeout(searchTimeout);
+
+            searchTimeout =
+                setTimeout(() => {
+
+                    searchQuery =
+                        e.target.value
+                            .trim()
+                            .toLowerCase();
+
+                    renderProducts();
+
+                }, 250);
         }
-        cartOverlay.classList.remove('active');
-        goToStep(1);
-        checkoutModal?.classList.add('active');
-        // Stamp the time the form was opened (used for speed-bot check)
-        const tsEl = document.getElementById('bb-form-ts');
-        if (tsEl) tsEl.value = Date.now();
-    });
+    );
 
-    // Close checkout modal
-    cancelCheckout?.addEventListener('click', () => checkoutModal?.classList.remove('active'));
-    checkoutModal?.addEventListener('click', (e) => {
-        if (e.target === checkoutModal) checkoutModal.classList.remove('active');
-    });
+    // ─── Checkout Open ───────────────────────────────
+    checkoutBtn?.addEventListener(
+        'click',
+        () => {
 
-    // Step 1 → Step 2
-    checkoutForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!validateStep1()) return;
-        buildReview();
-        goToStep(2);
-    });
+            if (cart.length === 0) {
 
-    // Back to step 1
-    btnBack?.addEventListener('click', () => goToStep(1));
+                showToast(
+                    '🛒 Your cart is empty!'
+                );
 
-    // Confirm Order
-    btnConfirm?.addEventListener('click', () => placeOrder());
+                return;
+            }
 
-    // ── Product Detail Modal ──
-    const pdModal = document.getElementById('product-detail-modal');
-    document.getElementById('pd-close-btn')?.addEventListener('click', () => pdModal?.classList.remove('active'));
-    pdModal?.addEventListener('click', (e) => {
-        if (e.target === pdModal) pdModal.classList.remove('active');
-    });
+            cartOverlay?.classList.remove(
+                'active'
+            );
 
-    document.getElementById('pd-add-cart-btn')?.addEventListener('click', function() {
-        const id = parseInt(this.dataset.productId);
-        const activeSizeBtn = document.querySelector('#pd-sizes-wrap .size-btn.selected');
-        const selectedSize = activeSizeBtn ? activeSizeBtn.textContent : null;
-        addToCart(id, null, selectedSize);
-        pdModal?.classList.remove('active');
-        cartOverlay?.classList.add('active');
-    });
+            goToStep(1);
 
-    // ── Hamburger / Mobile Nav ──
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
+            checkoutModal?.classList.add(
+                'active'
+            );
+
+            const tsEl =
+                document.getElementById(
+                    'bb-form-ts'
+                );
+
+            if (tsEl) {
+                tsEl.value =
+                    Date.now();
+            }
+
+            // Make sure districts are available
+            setupSriLankaDeliveryAreas();
+        }
+    );
+
+    // Close checkout
+    cancelCheckout?.addEventListener(
+        'click',
+        () => {
+            checkoutModal?.classList.remove(
+                'active'
+            );
+        }
+    );
+
+    // Close checkout by background click
+    checkoutModal?.addEventListener(
+        'click',
+        e => {
+
+            if (e.target === checkoutModal) {
+
+                checkoutModal.classList.remove(
+                    'active'
+                );
+            }
+
+        }
+    );
+
+    // ─── Step 1 → Step 2 ─────────────────────────────
+    checkoutForm?.addEventListener(
+        'submit',
+        e => {
+
+            e.preventDefault();
+
+            if (!validateStep1()) {
+                return;
+            }
+
+            buildReview();
+
+            goToStep(2);
+        }
+    );
+
+    // Back
+    btnBack?.addEventListener(
+        'click',
+        () => goToStep(1)
+    );
+
+    // Confirm order
+    btnConfirm?.addEventListener(
+        'click',
+        () => placeOrder()
+    );
+
+    // ─── Product Detail Modal ────────────────────────
+    const pdModal =
+        document.getElementById(
+            'product-detail-modal'
+        );
+
+    document
+        .getElementById('pd-close-btn')
+        ?.addEventListener(
+            'click',
+            () => {
+                pdModal?.classList.remove(
+                    'active'
+                );
+            }
+        );
+
+    pdModal?.addEventListener(
+        'click',
+        e => {
+
+            if (e.target === pdModal) {
+                pdModal.classList.remove(
+                    'active'
+                );
+            }
+
+        }
+    );
+
+    document
+        .getElementById('pd-add-cart-btn')
+        ?.addEventListener(
+            'click',
+            function () {
+
+                const id =
+                    parseInt(
+                        this.dataset.productId
+                    );
+
+                const activeSizeBtn =
+                    document.querySelector(
+                        '#pd-sizes-wrap .size-btn.selected'
+                    );
+
+                const selectedSize =
+                    activeSizeBtn
+                        ? activeSizeBtn.textContent
+                        : null;
+
+                addToCart(
+                    id,
+                    null,
+                    selectedSize
+                );
+
+                pdModal?.classList.remove(
+                    'active'
+                );
+
+                cartOverlay?.classList.add(
+                    'active'
+                );
+            }
+        );
+
+    // ─── Hamburger / Mobile Nav ─────────────────────
+    const hamburger =
+        document.getElementById(
+            'hamburger'
+        );
+
+    const mobileNav =
+        document.getElementById(
+            'mobile-nav'
+        );
 
     if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('open');
-            mobileNav.classList.toggle('open');
-            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-        });
 
-        // Close on backdrop click
-        mobileNav.addEventListener('click', (e) => {
-            if (!e.target.closest('.mobile-nav-panel')) {
-                hamburger.classList.remove('open');
-                mobileNav.classList.remove('open');
-                document.body.style.overflow = '';
+        hamburger.addEventListener(
+            'click',
+            () => {
+
+                hamburger.classList.toggle(
+                    'open'
+                );
+
+                mobileNav.classList.toggle(
+                    'open'
+                );
+
+                document.body.style.overflow =
+                    mobileNav.classList.contains(
+                        'open'
+                    )
+                        ? 'hidden'
+                        : '';
             }
-        });
+        );
 
-        // Close on nav link tap
-        mobileNav.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('open');
-                mobileNav.classList.remove('open');
-                document.body.style.overflow = '';
+        mobileNav.addEventListener(
+            'click',
+            e => {
+
+                if (
+                    !e.target.closest(
+                        '.mobile-nav-panel'
+                    )
+                ) {
+
+                    hamburger.classList.remove(
+                        'open'
+                    );
+
+                    mobileNav.classList.remove(
+                        'open'
+                    );
+
+                    document.body.style.overflow =
+                        '';
+                }
+
+            }
+        );
+
+        mobileNav
+            .querySelectorAll(
+                '.mobile-nav-link'
+            )
+            .forEach(link => {
+
+                link.addEventListener(
+                    'click',
+                    () => {
+
+                        hamburger.classList.remove(
+                            'open'
+                        );
+
+                        mobileNav.classList.remove(
+                            'open'
+                        );
+
+                        document.body.style.overflow =
+                            '';
+                    }
+                );
             });
-        });
     }
 
-    // ── Theme Switcher Interaction ──
-    const themeToggle = document.getElementById('theme-toggle');
+    // ─── Theme Switcher ──────────────────────────────
+    const themeToggle =
+        document.getElementById(
+            'theme-toggle'
+        );
+
     if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'rose';
-            const nextTheme = currentTheme === 'rose' ? 'onyx' : 'rose';
-            document.documentElement.setAttribute('data-theme', nextTheme);
-            localStorage.setItem('bb-theme', nextTheme);
-        });
+
+        themeToggle.addEventListener(
+            'click',
+            () => {
+
+                const currentTheme =
+                    document.documentElement
+                        .getAttribute(
+                            'data-theme'
+                        ) || 'rose';
+
+                const nextTheme =
+                    currentTheme === 'rose'
+                        ? 'onyx'
+                        : 'rose';
+
+                document.documentElement
+                    .setAttribute(
+                        'data-theme',
+                        nextTheme
+                    );
+
+                localStorage.setItem(
+                    'bb-theme',
+                    nextTheme
+                );
+            }
+        );
     }
 }
 
-// ─── Render Products ──────────────────────────────────
+// ─── Render Products ─────────────────────────────────
 function renderProducts() {
+
     let list = [...products];
 
-    // Filter by category
+    // Category filter
     if (currentFilter !== 'All') {
-        list = list.filter(p => p.category === currentFilter);
+
+        list =
+            list.filter(
+                p =>
+                    p.category === currentFilter
+            );
     }
 
-    // Filter by search
+    // Search filter
     if (searchQuery) {
-        list = list.filter(p =>
-            p.name.toLowerCase().includes(searchQuery) ||
-            p.category.toLowerCase().includes(searchQuery)
+
+        list =
+            list.filter(
+                p =>
+                    p.name
+                        .toLowerCase()
+                        .includes(searchQuery) ||
+
+                    p.category
+                        .toLowerCase()
+                        .includes(searchQuery)
+            );
+    }
+
+    // Sorting
+    if (currentSort === 'price-asc') {
+
+        list.sort(
+            (a, b) =>
+                a.price - b.price
+        );
+
+    } else if (
+        currentSort === 'price-desc'
+    ) {
+
+        list.sort(
+            (a, b) =>
+                b.price - a.price
+        );
+
+    } else if (
+        currentSort === 'name-asc'
+    ) {
+
+        list.sort(
+            (a, b) =>
+                a.name.localeCompare(
+                    b.name
+                )
+        );
+
+    } else if (
+        currentSort === 'name-desc'
+    ) {
+
+        list.sort(
+            (a, b) =>
+                b.name.localeCompare(
+                    a.name
+                )
+        );
+
+    } else if (
+        currentSort === 'popularity'
+    ) {
+
+        list.sort(
+            (a, b) =>
+                b.rating - a.rating ||
+                b.reviews - a.reviews
         );
     }
 
-    // Sort
-    if (currentSort === 'price-asc') list.sort((a, b) => a.price - b.price);
-    else if (currentSort === 'price-desc') list.sort((a, b) => b.price - a.price);
-    else if (currentSort === 'name-asc') list.sort((a, b) => a.name.localeCompare(b.name));
-    else if (currentSort === 'name-desc') list.sort((a, b) => b.name.localeCompare(a.name));
-    else if (currentSort === 'popularity') list.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
+    // Heading
+    const heading =
+        document.getElementById(
+            'products-heading'
+        );
 
-    // Heading update (null-safe — doesn't exist on products page)
-    const heading = document.getElementById('products-heading');
-    if (heading) heading.textContent = currentFilter === 'All' ? 'Featured Products' : currentFilter;
+    if (heading) {
 
-    // Limit to 3 random products on index.html (with Spiderman mask pinned)
-    if (!document.querySelector('.products-page-main')) {
-        const pinIndex = list.findIndex(p => p.id === 15);
+        heading.textContent =
+            currentFilter === 'All'
+                ? 'Featured Products'
+                : currentFilter;
+    }
+
+    // Homepage: show 3 products
+    if (
+        !document.querySelector(
+            '.products-page-main'
+        )
+    ) {
+
+        const pinIndex =
+            list.findIndex(
+                p => p.id === 15
+            );
+
         let pinItem = null;
+
         if (pinIndex !== -1) {
-            pinItem = list.splice(pinIndex, 1)[0];
+
+            pinItem =
+                list.splice(
+                    pinIndex,
+                    1
+                )[0];
         }
-        list = list.sort(() => Math.random() - 0.5).slice(0, 2);
+
+        list =
+            list
+                .sort(
+                    () =>
+                        Math.random() - 0.5
+                )
+                .slice(0, 2);
+
         if (pinItem) {
             list.unshift(pinItem);
         }
     }
 
-    // Products count (products page)
-    const countEl = document.getElementById('count-num');
-    if (countEl) countEl.textContent = list.length;
+    // Count
+    const countEl =
+        document.getElementById(
+            'count-num'
+        );
 
-    // Show/hide no results
-    if (noResultsEl) noResultsEl.style.display = list.length === 0 ? 'block' : 'none';
-    if (productGrid) productGrid.style.display = list.length === 0 ? 'none' : 'grid';
+    if (countEl) {
+        countEl.textContent =
+            list.length;
+    }
 
-    if (!productGrid) return;
+    // No results
+    if (noResultsEl) {
+
+        noResultsEl.style.display =
+            list.length === 0
+                ? 'block'
+                : 'none';
+    }
+
+    if (productGrid) {
+
+        productGrid.style.display =
+            list.length === 0
+                ? 'none'
+                : 'grid';
+    }
+
+    if (!productGrid) {
+        return;
+    }
+
     productGrid.innerHTML = '';
 
-    list.forEach((product, i) => {
-        const card = document.createElement('div');
-        card.className = 'product-card clickable-card';
-        card.style.animationDelay = `${i * 0.04}s`;
-        card.setAttribute('role', 'button');
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('aria-label', `View details for ${product.name}`);
+    list.forEach(
+        (product, i) => {
 
-        const discountPct = product.original
-            ? Math.round((1 - product.price / product.original) * 100)
-            : null;
+            const card =
+                document.createElement(
+                    'div'
+                );
 
-        const badgeHTML = product.badge
-            ? `<div class="badge ${product.badge === 'new' ? 'new' : ''}">${product.badge === 'new' ? 'New' : `${discountPct}% Off`}</div>`
-            : '';
+            card.className =
+                'product-card clickable-card';
 
-        const originalHTML = product.original
-            ? `<span class="product-price-original">Rs ${product.original.toLocaleString()}</span>`
-            : '';
+            card.style.animationDelay =
+                `${i * 0.04}s`;
 
-        const freeDeliveryTag = '';
+            card.setAttribute(
+                'role',
+                'button'
+            );
 
-        const stars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
+            card.setAttribute(
+                'tabindex',
+                '0'
+            );
 
-        card.innerHTML = `
-            ${badgeHTML}
-            <div class="product-img">
-                <img src="${product.img}" alt="${product.name}" loading="lazy">
-                <div class="view-details-overlay">👁 View Details</div>
-            </div>
-            <div class="product-info">
-                <div class="product-category">${product.category}</div>
-                <div class="product-title">${product.name}</div>
-                <div class="product-rating">
-                    <span class="stars">${stars}</span>
-                    <span>${product.rating} (${product.reviews})</span>
+            card.setAttribute(
+                'aria-label',
+                `View details for ${product.name}`
+            );
+
+            const discountPct =
+                product.original
+                    ? Math.round(
+                        (
+                            1 -
+                            product.price /
+                            product.original
+                        ) * 100
+                    )
+                    : null;
+
+            const badgeHTML =
+                product.badge
+                    ? `<div class="badge ${
+                        product.badge === 'new'
+                            ? 'new'
+                            : ''
+                    }">${
+                        product.badge === 'new'
+                            ? 'New'
+                            : `${discountPct}% Off`
+                    }</div>`
+                    : '';
+
+            const originalHTML =
+                product.original
+                    ? `
+                        <span class="product-price-original">
+                            Rs ${product.original.toLocaleString()}
+                        </span>
+                    `
+                    : '';
+
+            const stars =
+                '★'.repeat(
+                    Math.round(
+                        product.rating
+                    )
+                ) +
+                '☆'.repeat(
+                    5 -
+                    Math.round(
+                        product.rating
+                    )
+                );
+
+            card.innerHTML = `
+                ${badgeHTML}
+
+                <div class="product-img">
+                    <img
+                        src="${product.img}"
+                        alt="${product.name}"
+                        loading="lazy"
+                    >
+
+                    <div class="view-details-overlay">
+                        👁 View Details
+                    </div>
                 </div>
-                ${freeDeliveryTag}
-                <div class="product-price-row">
-                    <div class="product-price">Rs ${product.price.toLocaleString()}</div>
-                    ${originalHTML}
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        ${product.category}
+                    </div>
+
+                    <div class="product-title">
+                        ${product.name}
+                    </div>
+
+                    <div class="product-rating">
+                        <span class="stars">
+                            ${stars}
+                        </span>
+
+                        <span>
+                            ${product.rating}
+                            (${product.reviews})
+                        </span>
+                    </div>
+
+                    <div
+                        style="
+                            font-size:0.78rem;
+                            color:#16803c;
+                            margin:5px 0;
+                            font-weight:600;
+                        "
+                    >
+                        🚚 Sri Lanka-wide delivery
+                    </div>
+
+                    <div class="product-price-row">
+
+                        <div class="product-price">
+                            Rs ${product.price.toLocaleString()}
+                        </div>
+
+                        ${originalHTML}
+
+                    </div>
+
+                    <button
+                        class="add-to-cart"
+                        onclick="event.stopPropagation(); addToCart(${product.id}, this)"
+                    >
+                        + Add to Cart
+                    </button>
+
                 </div>
-                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${product.id}, this)">
-                    + Add to Cart
-                </button>
-            </div>
-        `;
+            `;
 
-        // Click card → open detail modal
-        card.addEventListener('click', () => openProductDetail(product.id));
-        card.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') openProductDetail(product.id);
-        });
+            // Open details
+            card.addEventListener(
+                'click',
+                () =>
+                    openProductDetail(
+                        product.id
+                    )
+            );
 
-        productGrid.appendChild(card);
-    });
+            // Keyboard support
+            card.addEventListener(
+                'keydown',
+                e => {
+
+                    if (
+                        e.key === 'Enter' ||
+                        e.key === ' '
+                    ) {
+
+                        e.preventDefault();
+
+                        openProductDetail(
+                            product.id
+                        );
+                    }
+                }
+            );
+
+            productGrid.appendChild(
+                card
+            );
+        }
+    );
 }
 
-// ─── Product Detail Modal ─────────────────────────────
-window.openProductDetail = function(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+// ─── Product Detail Modal ────────────────────────────
+window.openProductDetail =
+    function(productId) {
 
-    const d = product.details || {};
-    const stars = '★'.repeat(Math.round(product.rating)) + '☆'.repeat(5 - Math.round(product.rating));
+        const product =
+            products.find(
+                p => p.id === productId
+            );
 
-    // Sizes HTML
-    const isRing = product.category === 'Fashion' || product.name.toLowerCase().includes('ring');
-    const sizeLabel = isRing ? 'Ring Size' : 'Select Size';
-    const sizesHTML = d.sizes && d.sizes.length > 0
-        ? `<div class="detail-sizes">
-               <div class="detail-label">${sizeLabel}</div>
-               <div class="size-options">${d.sizes.map((s, idx) => `<button class="size-btn ${idx === 0 ? 'selected' : ''}" onclick="event.stopPropagation(); selectSize(this, '${s}', ${product.id})">${s}</button>`).join('')}</div>
-           </div>`
-        : '';
+        if (!product) {
+            return;
+        }
 
-    // Highlights HTML
-    const highlightsHTML = d.highlights
-        ? `<ul class="highlights-list">${d.highlights.map(h => `<li>${h}</li>`).join('')}</ul>`
-        : '';
+        const d =
+            product.details || {};
 
-    // Specs rows
-    const specsHTML = [
-        d.material ? `<tr><td>Material</td><td>${d.material}</td></tr>` : '',
-        d.style    ? `<tr><td>Style</td><td>${d.style}</td></tr>`       : '',
-        d.finish   ? `<tr><td>Finish</td><td>${d.finish}</td></tr>`     : '',
-        d.occasion ? `<tr><td>Occasion</td><td>${d.occasion}</td></tr>` : ''
-    ].join('');
+        const stars =
+            '★'.repeat(
+                Math.round(
+                    product.rating
+                )
+            ) +
+            '☆'.repeat(
+                5 -
+                Math.round(
+                    product.rating
+                )
+            );
 
-    const freeDeliveryBadge = '';
+        const isRing =
+            product.category === 'Fashion' ||
+            product.name
+                .toLowerCase()
+                .includes('ring');
 
-    const modal = document.getElementById('product-detail-modal');
-    if (!modal) return;
+        const sizeLabel =
+            isRing
+                ? 'Ring Size'
+                : 'Select Size';
 
-    document.getElementById('pd-img').src           = product.img;
-    document.getElementById('pd-img').alt           = product.name;
-    document.getElementById('pd-category').textContent   = product.category;
-    document.getElementById('pd-name').textContent       = product.name;
-    document.getElementById('pd-stars').textContent      = stars;
-    document.getElementById('pd-rating-count').textContent = `${product.rating} (${product.reviews} review${product.reviews === 1 ? '' : 's'})`;
-    
-    // Set initial price (first size's price if sizePrices exists, otherwise base price)
-    const defaultSize = d.sizes && d.sizes.length > 0 ? d.sizes[0] : null;
-    let initialPrice = product.price;
-    if (defaultSize && d.sizePrices && d.sizePrices[defaultSize]) {
-        initialPrice = d.sizePrices[defaultSize];
-    }
-    document.getElementById('pd-price').textContent      = `Rs ${initialPrice.toLocaleString()}`;
-    
-    document.getElementById('pd-free-delivery').innerHTML = freeDeliveryBadge;
-    document.getElementById('pd-description').textContent = d.description || '';
-    document.getElementById('pd-highlights').innerHTML    = highlightsHTML;
-    document.getElementById('pd-sizes-wrap').innerHTML    = sizesHTML;
-    document.getElementById('pd-specs-body').innerHTML    = specsHTML;
-    document.getElementById('pd-specs-table').style.display = specsHTML ? '' : 'none';
-    document.getElementById('pd-add-cart-btn').dataset.productId = product.id;
+        const sizesHTML =
+            d.sizes &&
+            d.sizes.length > 0
 
-    modal.classList.add('active');
-};
+                ? `
+                    <div class="detail-sizes">
 
-window.selectSize = function(btn, size, productId) {
-    btn.closest('.size-options')
-       .querySelectorAll('.size-btn')
-       .forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
+                        <div class="detail-label">
+                            ${sizeLabel}
+                        </div>
 
-    // Update modal price if sizePrices exists
-    const product = products.find(p => p.id === productId);
-    if (product && product.details && product.details.sizePrices && product.details.sizePrices[size]) {
-        const newPrice = product.details.sizePrices[size];
-        document.getElementById('pd-price').textContent = `Rs ${newPrice.toLocaleString()}`;
-    }
-};
+                        <div class="size-options">
 
-// ─── Cart Logic ───────────────────────────────────────
-window.addToCart = function(productId, btn, selectedSize = null) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+                            ${d.sizes.map(
+                                (s, idx) => `
 
-    // Default to first size if not specified but sizes exist
-    if (!selectedSize && product.details && product.details.sizes && product.details.sizes.length > 0) {
-        selectedSize = product.details.sizes[0];
-    }
+                                <button
+                                    class="size-btn ${
+                                        idx === 0
+                                            ? 'selected'
+                                            : ''
+                                    }"
+                                    onclick="
+                                        event.stopPropagation();
+                                        selectSize(
+                                            this,
+                                            '${String(s)
+                                                .replace(
+                                                    /'/g,
+                                                    "\\'"
+                                                )}',
+                                            ${product.id}
+                                        )
+                                    "
+                                >
+                                    ${s}
+                                </button>
 
-    // Determine price based on selectedSize
-    let price = product.price;
-    if (selectedSize && product.details && product.details.sizePrices && product.details.sizePrices[selectedSize]) {
-        price = product.details.sizePrices[selectedSize];
-    }
+                            `
+                            ).join('')}
 
-    const existing = cart.find(i => i.id === productId && i.selectedSize === selectedSize);
+                        </div>
+                    </div>
+                `
+                : '';
 
-    if (existing) {
-        existing.quantity += 1;
-    } else {
-        cart.push({ 
-            ...product, 
-            price: price, 
-            selectedSize: selectedSize, 
-            quantity: 1 
-        });
-    }
+        const highlightsHTML =
+            d.highlights
 
-    saveCart();
-    updateCart();
-    showToast(`✅ "${product.name}"${selectedSize ? ` (${selectedSize})` : ''} added to cart!`);
+                ? `
+                    <ul class="highlights-list">
 
-    // Button feedback
-    if (btn) {
-        btn.textContent = '✓ Added!';
-        btn.classList.add('added');
-        setTimeout(() => {
-            btn.textContent = '+ Add to Cart';
-            btn.classList.remove('added');
-        }, 1800);
-    }
+                        ${d.highlights
+                            .map(
+                                h =>
+                                    `<li>${h}</li>`
+                            )
+                            .join('')}
 
-    // Cart icon bounce
-    cartCountEl.style.animation = 'none';
-    requestAnimationFrame(() => { cartCountEl.style.animation = ''; });
-};
+                    </ul>
+                `
+                : '';
 
-window.updateQuantity = function(id, delta, size = '') {
-    const targetSize = size === 'null' || size === '' ? null : size;
-    const item = cart.find(i => i.id === id && i.selectedSize === targetSize);
-    if (!item) return;
-    item.quantity += delta;
-    if (item.quantity <= 0) cart = cart.filter(i => !(i.id === id && i.selectedSize === targetSize));
-    saveCart();
-    updateCart();
-};
+        const specsHTML = [
+            d.material
+                ? `<tr>
+                    <td>Material</td>
+                    <td>${d.material}</td>
+                   </tr>`
+                : '',
 
-window.removeItem = function(id, size = '') {
-    const targetSize = size === 'null' || size === '' ? null : size;
-    cart = cart.filter(i => !(i.id === id && i.selectedSize === targetSize));
-    saveCart();
-    updateCart();
-};
+            d.style
+                ? `<tr>
+                    <td>Style</td>
+                    <td>${d.style}</td>
+                   </tr>`
+                : '',
 
+            d.finish
+                ? `<tr>
+                    <td>Finish</td>
+                    <td>${d.finish}</td>
+                   </tr>`
+                : '',
+
+            d.occasion
+                ? `<tr>
+                    <td>Occasion</td>
+                    <td>${d.occasion}</td>
+                   </tr>`
+                : ''
+        ].join('');
+
+        const modal =
+            document.getElementById(
+                'product-detail-modal'
+            );
+
+        if (!modal) {
+            return;
+        }
+
+        document.getElementById(
+            'pd-img'
+        ).src = product.img;
+
+        document.getElementById(
+            'pd-img'
+        ).alt = product.name;
+
+        document.getElementById(
+            'pd-category'
+        ).textContent =
+            product.category;
+
+        document.getElementById(
+            'pd-name'
+        ).textContent =
+            product.name;
+
+        document.getElementById(
+            'pd-stars'
+        ).textContent =
+            stars;
+
+        document.getElementById(
+            'pd-rating-count'
+        ).textContent =
+            `${product.rating} (${product.reviews} review${
+                product.reviews === 1
+                    ? ''
+                    : 's'
+            })`;
+
+        // Initial price
+        const defaultSize =
+            d.sizes &&
+            d.sizes.length > 0
+                ? d.sizes[0]
+                : null;
+
+        let initialPrice =
+            product.price;
+
+        if (
+            defaultSize &&
+            d.sizePrices &&
+            d.sizePrices[defaultSize]
+        ) {
+
+            initialPrice =
+                d.sizePrices[
+                    defaultSize
+                ];
+        }
+
+        document.getElementById(
+            'pd-price'
+        ).textContent =
+            `Rs ${initialPrice.toLocaleString()}`;
+
+        // Sri Lanka delivery message
+        const deliveryElement =
+            document.getElementById(
+                'pd-free-delivery'
+            );
+
+        if (deliveryElement) {
+
+            deliveryElement.innerHTML = `
+                <div
+                    style="
+                        color:#16803c;
+                        font-weight:600;
+                        margin-top:8px;
+                    "
+                >
+                    🚚 Delivery available across Sri Lanka
+                </div>
+
+                <div
+                    style="
+                        color:#555;
+                        font-size:0.85rem;
+                        margin-top:3px;
+                    "
+                >
+                    Delivery Fee: Rs ${DELIVERY_FEE.toLocaleString()}
+                </div>
+            `;
+        }
+
+        document.getElementById(
+            'pd-description'
+        ).textContent =
+            d.description || '';
+
+        document.getElementById(
+            'pd-highlights'
+        ).innerHTML =
+            highlightsHTML;
+
+        document.getElementById(
+            'pd-sizes-wrap'
+        ).innerHTML =
+            sizesHTML;
+
+        document.getElementById(
+            'pd-specs-body'
+        ).innerHTML =
+            specsHTML;
+
+        document.getElementById(
+            'pd-specs-table'
+        ).style.display =
+            specsHTML ? '' : 'none';
+
+        document.getElementById(
+            'pd-add-cart-btn'
+        ).dataset.productId =
+            product.id;
+
+        modal.classList.add(
+            'active'
+        );
+    };
+
+// ─── Select Product Size ─────────────────────────────
+window.selectSize =
+    function(btn, size, productId) {
+
+        btn.closest(
+            '.size-options'
+        )
+        .querySelectorAll(
+            '.size-btn'
+        )
+        .forEach(
+            b =>
+                b.classList.remove(
+                    'selected'
+                )
+        );
+
+        btn.classList.add(
+            'selected'
+        );
+
+        const product =
+            products.find(
+                p => p.id === productId
+            );
+
+        if (
+            product &&
+            product.details &&
+            product.details.sizePrices &&
+            product.details.sizePrices[size]
+        ) {
+
+            const newPrice =
+                product.details
+                    .sizePrices[size];
+
+            document.getElementById(
+                'pd-price'
+            ).textContent =
+                `Rs ${newPrice.toLocaleString()}`;
+        }
+    };
+
+// ─── Add To Cart ────────────────────────────────────
+window.addToCart =
+    function(
+        productId,
+        btn,
+        selectedSize = null
+    ) {
+
+        const product =
+            products.find(
+                p => p.id === productId
+            );
+
+        if (!product) {
+            return;
+        }
+
+        // Default size
+        if (
+            !selectedSize &&
+            product.details &&
+            product.details.sizes &&
+            product.details.sizes.length > 0
+        ) {
+
+            selectedSize =
+                product.details.sizes[0];
+        }
+
+        // Price
+        let price =
+            product.price;
+
+        if (
+            selectedSize &&
+            product.details &&
+            product.details.sizePrices &&
+            product.details
+                .sizePrices[selectedSize]
+        ) {
+
+            price =
+                product.details
+                    .sizePrices[selectedSize];
+        }
+
+        // Existing item
+        const existing =
+            cart.find(
+                i =>
+                    i.id === productId &&
+                    i.selectedSize === selectedSize
+            );
+
+        if (existing) {
+
+            existing.quantity += 1;
+
+        } else {
+
+            cart.push({
+                ...product,
+                price: price,
+                selectedSize:
+                    selectedSize,
+                quantity: 1
+            });
+        }
+
+        saveCart();
+        updateCart();
+
+        showToast(
+            `✅ "${product.name}"${
+                selectedSize
+                    ? ` (${selectedSize})`
+                    : ''
+            } added to cart!`
+        );
+
+        // Button feedback
+        if (btn) {
+
+            btn.textContent =
+                '✓ Added!';
+
+            btn.classList.add(
+                'added'
+            );
+
+            setTimeout(
+                () => {
+
+                    btn.textContent =
+                        '+ Add to Cart';
+
+                    btn.classList.remove(
+                        'added'
+                    );
+
+                },
+                1800
+            );
+        }
+
+        // Cart bounce
+        if (cartCountEl) {
+
+            cartCountEl.style.animation =
+                'none';
+
+            requestAnimationFrame(
+                () => {
+
+                    cartCountEl.style.animation =
+                        '';
+                }
+            );
+        }
+    };
+
+// ─── Update Quantity ────────────────────────────────
+window.updateQuantity =
+    function(
+        id,
+        delta,
+        size = ''
+    ) {
+
+        const targetSize =
+            size === 'null' ||
+            size === ''
+                ? null
+                : size;
+
+        const item =
+            cart.find(
+                i =>
+                    i.id === id &&
+                    i.selectedSize ===
+                        targetSize
+            );
+
+        if (!item) {
+            return;
+        }
+
+        item.quantity +=
+            delta;
+
+        if (item.quantity <= 0) {
+
+            cart =
+                cart.filter(
+                    i =>
+                        !(
+                            i.id === id &&
+                            i.selectedSize ===
+                                targetSize
+                        )
+                );
+        }
+
+        saveCart();
+        updateCart();
+    };
+
+// ─── Remove Item ────────────────────────────────────
+window.removeItem =
+    function(
+        id,
+        size = ''
+    ) {
+
+        const targetSize =
+            size === 'null' ||
+            size === ''
+                ? null
+                : size;
+
+        cart =
+            cart.filter(
+                i =>
+                    !(
+                        i.id === id &&
+                        i.selectedSize ===
+                            targetSize
+                    )
+            );
+
+        saveCart();
+        updateCart();
+    };
+
+// ─── Update Cart ────────────────────────────────────
 function updateCart() {
+
     let total = 0;
     let count = 0;
 
     if (cart.length === 0) {
+
         cartItemsEl.innerHTML = `
             <div class="cart-empty">
-                <span>🛒</span>
-                <p>Your cart is empty</p>
-                <small style="color:var(--text-muted);font-size:.82rem;">Add some items to get started</small>
-            </div>`;
-    } else {
-        cartItemsEl.innerHTML = '';
-        cart.forEach(item => {
-            total += item.price * item.quantity;
-            count += item.quantity;
 
-            const el = document.createElement('div');
-            el.className = 'cart-item';
-            el.innerHTML = `
-                <img src="${item.img}" alt="${item.name}" class="cart-item-img" loading="lazy">
-                <div class="cart-item-details">
-                    <div class="cart-item-title">
-                        ${item.name}
-                        ${item.selectedSize ? `<span class="cart-item-size-badge" style="font-size:0.75rem;color:var(--accent);display:block;margin-top:0.1rem;font-weight:600;">Size: ${item.selectedSize}</span>` : ''}
+                <span>🛒</span>
+
+                <p>
+                    Your cart is empty
+                </p>
+
+                <small
+                    style="
+                        color:var(--text-muted);
+                        font-size:.82rem;
+                    "
+                >
+                    Add some items to get started
+                </small>
+
+            </div>
+        `;
+
+    } else {
+
+        cartItemsEl.innerHTML = '';
+
+        cart.forEach(
+            item => {
+
+                total +=
+                    item.price *
+                    item.quantity;
+
+                count +=
+                    item.quantity;
+
+                const el =
+                    document.createElement(
+                        'div'
+                    );
+
+                el.className =
+                    'cart-item';
+
+                el.innerHTML = `
+                    <img
+                        src="${item.img}"
+                        alt="${item.name}"
+                        class="cart-item-img"
+                        loading="lazy"
+                    >
+
+                    <div class="cart-item-details">
+
+                        <div class="cart-item-title">
+
+                            ${item.name}
+
+                            ${
+                                item.selectedSize
+                                    ? `
+                                        <span
+                                            class="cart-item-size-badge"
+                                            style="
+                                                font-size:0.75rem;
+                                                color:var(--accent);
+                                                display:block;
+                                                margin-top:0.1rem;
+                                                font-weight:600;
+                                            "
+                                        >
+                                            Size:
+                                            ${item.selectedSize}
+                                        </span>
+                                    `
+                                    : ''
+                            }
+
+                        </div>
+
+                        <div class="cart-item-unit">
+                            Rs ${item.price.toLocaleString()} each
+                        </div>
+
+                        <div class="cart-item-price">
+                            Rs ${
+                                (
+                                    item.price *
+                                    item.quantity
+                                ).toLocaleString()
+                            }
+                        </div>
+
+                        <div class="cart-item-actions">
+
+                            <button
+                                class="qty-btn"
+                                onclick="
+                                    updateQuantity(
+                                        ${item.id},
+                                        -1,
+                                        '${item.selectedSize || ''}'
+                                    )
+                                "
+                            >
+                                −
+                            </button>
+
+                            <span class="qty-value">
+                                ${item.quantity}
+                            </span>
+
+                            <button
+                                class="qty-btn"
+                                onclick="
+                                    updateQuantity(
+                                        ${item.id},
+                                        1,
+                                        '${item.selectedSize || ''}'
+                                    )
+                                "
+                            >
+                                +
+                            </button>
+
+                            <button
+                                class="remove-btn"
+                                onclick="
+                                    removeItem(
+                                        ${item.id},
+                                        '${item.selectedSize || ''}'
+                                    )
+                                "
+                            >
+                                Remove
+                            </button>
+
+                        </div>
+
                     </div>
-                    <div class="cart-item-unit">Rs ${item.price.toLocaleString()} each</div>
-                    <div class="cart-item-price">Rs ${(item.price * item.quantity).toLocaleString()}</div>
-                    <div class="cart-item-actions">
-                        <button class="qty-btn" onclick="updateQuantity(${item.id}, -1, '${item.selectedSize || ''}')">−</button>
-                        <span class="qty-value">${item.quantity}</span>
-                        <button class="qty-btn" onclick="updateQuantity(${item.id}, 1, '${item.selectedSize || ''}')">+</button>
-                        <button class="remove-btn" onclick="removeItem(${item.id}, '${item.selectedSize || ''}')">Remove</button>
-                    </div>
-                </div>
-            `;
-            cartItemsEl.appendChild(el);
-        });
+                `;
+
+                cartItemsEl.appendChild(
+                    el
+                );
+            }
+        );
     }
 
-    cartCountEl.textContent = count;
-    cartTotalPriceEl.textContent = `Rs ${total.toLocaleString()}`;
+    if (cartCountEl) {
+        cartCountEl.textContent =
+            count;
+    }
+
+    if (cartTotalPriceEl) {
+        cartTotalPriceEl.textContent =
+            `Rs ${total.toLocaleString()}`;
+    }
 }
 
-// ─── Checkout Steps ───────────────────────────────────
+// ─── Checkout Steps ────────────────────────────────
 function goToStep(n) {
-    step1El.style.display = n === 1 ? 'block' : 'none';
-    step2El.style.display = n === 2 ? 'block' : 'none';
 
-    step1Ind.classList.toggle('active', n === 1);
-    step1Ind.classList.toggle('done', n > 1);
-    step2Ind.classList.toggle('active', n === 2);
+    if (step1El) {
+
+        step1El.style.display =
+            n === 1
+                ? 'block'
+                : 'none';
+    }
+
+    if (step2El) {
+
+        step2El.style.display =
+            n === 2
+                ? 'block'
+                : 'none';
+    }
+
+    if (step1Ind) {
+
+        step1Ind.classList.toggle(
+            'active',
+            n === 1
+        );
+
+        step1Ind.classList.toggle(
+            'done',
+            n > 1
+        );
+    }
+
+    if (step2Ind) {
+
+        step2Ind.classList.toggle(
+            'active',
+            n === 2
+        );
+    }
 }
 
+// ─── Validate Checkout ──────────────────────────────
 function validateStep1() {
-    const name = document.getElementById('c-name').value.trim();
-    const phone = document.getElementById('c-phone').value.trim();
-    const addr = document.getElementById('c-address').value.trim();
-    const area = document.getElementById('c-area').value;
 
-    if (!name || !phone || !addr || !area) {
-        showToast('⚠️ Please fill all required fields');
+    const name =
+        document.getElementById(
+            'c-name'
+        )?.value.trim();
+
+    const phone =
+        document.getElementById(
+            'c-phone'
+        )?.value.trim();
+
+    const addr =
+        document.getElementById(
+            'c-address'
+        )?.value.trim();
+
+    const area =
+        document.getElementById(
+            'c-area'
+        )?.value;
+
+    // Required fields
+    if (
+        !name ||
+        !phone ||
+        !addr ||
+        !area
+    ) {
+
+        showToast(
+            '⚠️ Please fill all required fields'
+        );
+
         return false;
     }
 
-    const phoneRegex = /^0\d{9}$/;
-    const cleanPhone = phone.replace(/\s/g, '');
-    if (!phoneRegex.test(cleanPhone)) {
-        showToast('⚠️ Enter a valid Sri Lankan phone number (e.g. 0771234567)');
+    // Sri Lankan phone validation
+    const phoneRegex =
+        /^0\d{9}$/;
+
+    const cleanPhone =
+        phone.replace(
+            /\s/g,
+            ''
+        );
+
+    if (
+        !phoneRegex.test(
+            cleanPhone
+        )
+    ) {
+
+        showToast(
+            '⚠️ Enter a valid Sri Lankan phone number (e.g. 0771234567)'
+        );
+
+        return false;
+    }
+
+    // District validation
+    if (
+        !sriLankaDistricts.includes(
+            area
+        )
+    ) {
+
+        showToast(
+            '⚠️ Please select a valid Sri Lankan district'
+        );
+
         return false;
     }
 
     return true;
 }
 
+// ─── Build Order Review ─────────────────────────────
 function buildReview() {
-    const name = document.getElementById('c-name').value.trim();
-    const phone = document.getElementById('c-phone').value.trim();
-    const addr = document.getElementById('c-address').value.trim();
-    const area = document.getElementById('c-area').value;
-    const note = document.getElementById('c-note').value.trim();
 
+    const name =
+        document.getElementById(
+            'c-name'
+        ).value.trim();
+
+    const phone =
+        document.getElementById(
+            'c-phone'
+        ).value.trim();
+
+    const addr =
+        document.getElementById(
+            'c-address'
+        ).value.trim();
+
+    const area =
+        document.getElementById(
+            'c-area'
+        ).value;
+
+    const note =
+        document.getElementById(
+            'c-note'
+        )?.value.trim() || '';
+
+    // Customer address review
     reviewAddressEl.innerHTML = `
-        <strong>${name}</strong> &nbsp;|&nbsp; ${phone}<br>
-        ${addr}, ${area}<br>
-        Vavuniya District, Northern Province<br>
-        ${note ? `<em>Note: ${note}</em>` : ''}
+        <strong>
+            ${name}
+        </strong>
+
+        &nbsp;|&nbsp;
+
+        ${phone}
+
+        <br>
+
+        ${addr},
+        ${area}
+
+        <br>
+
+        ${DELIVERY_COUNTRY}
+
+        <br>
+
+        <span
+            style="
+                color:#16803c;
+                font-weight:600;
+            "
+        >
+            🚚 Sri Lanka-wide delivery
+        </span>
+
+        <br>
+
+        <span
+            style="
+                font-size:0.85rem;
+                color:#666;
+            "
+        >
+            Delivery Fee:
+            Rs ${DELIVERY_FEE.toLocaleString()}
+        </span>
+
+        ${
+            note
+                ? `
+                    <br>
+                    <em>
+                        Note: ${note}
+                    </em>
+                `
+                : ''
+        }
     `;
 
     reviewItemsEl.innerHTML = '';
+
     let subtotal = 0;
-    cart.forEach(item => {
-        subtotal += item.price * item.quantity;
-        const row = document.createElement('div');
-        row.className = 'review-item';
-        row.innerHTML = `
-            <span>${item.name} × ${item.quantity}</span>
-            <strong>Rs ${(item.price * item.quantity).toLocaleString()}</strong>
-        `;
-        reviewItemsEl.appendChild(row);
-    });
 
-    // Add Delivery Fee Row
-    const deliveryFee = 300;
-    const deliveryRow = document.createElement('div');
-    deliveryRow.className = 'review-item';
+    cart.forEach(
+        item => {
+
+            subtotal +=
+                item.price *
+                item.quantity;
+
+            const row =
+                document.createElement(
+                    'div'
+                );
+
+            row.className =
+                'review-item';
+
+            row.innerHTML = `
+                <span>
+                    ${item.name}
+                    ×
+                    ${item.quantity}
+                    ${
+                        item.selectedSize
+                            ? ` (${item.selectedSize})`
+                            : ''
+                    }
+                </span>
+
+                <strong>
+                    Rs ${
+                        (
+                            item.price *
+                            item.quantity
+                        ).toLocaleString()
+                    }
+                </strong>
+            `;
+
+            reviewItemsEl.appendChild(
+                row
+            );
+        }
+    );
+
+    // Delivery fee
+    const deliveryRow =
+        document.createElement(
+            'div'
+        );
+
+    deliveryRow.className =
+        'review-item';
+
     deliveryRow.innerHTML = `
-        <span>Delivery Fee</span>
-        <strong>Rs ${deliveryFee.toLocaleString()}</strong>
-    `;
-    reviewItemsEl.appendChild(deliveryRow);
+        <span>
+            Delivery Fee - Sri Lanka
+        </span>
 
-    const total = subtotal + deliveryFee;
+        <strong>
+            Rs ${DELIVERY_FEE.toLocaleString()}
+        </strong>
+    `;
+
+    reviewItemsEl.appendChild(
+        deliveryRow
+    );
+
+    const total =
+        subtotal +
+        DELIVERY_FEE;
 
     if (total > 10000) {
-        reviewTotalEl.innerHTML = `Rs ${total.toLocaleString()} <br><span style="color:#d32f2f; font-size: 0.85em; font-weight: 500;">(50% Advance Payment Required)</span>`;
+
+        reviewTotalEl.innerHTML = `
+            Rs ${total.toLocaleString()}
+
+            <br>
+
+            <span
+                style="
+                    color:#d32f2f;
+                    font-size:0.85em;
+                    font-weight:500;
+                "
+            >
+                (50% Advance Payment Required)
+            </span>
+        `;
+
     } else {
-        reviewTotalEl.textContent = `Rs ${total.toLocaleString()} (COD)`;
+
+        reviewTotalEl.textContent =
+            `Rs ${total.toLocaleString()} (COD)`;
     }
 }
 
-// ─── Anti-Spam Guard ───────────────────────────────────
+// ─── Anti-Spam Guard ────────────────────────────────
 function isSpam() {
-    // 1. Honeypot: bot filled the hidden field
-    const honeypot = document.getElementById('bb-url');
-    if (honeypot && honeypot.value.trim() !== '') {
-        console.warn('[BB] Spam blocked: honeypot triggered');
+
+    // Honeypot
+    const honeypot =
+        document.getElementById(
+            'bb-url'
+        );
+
+    if (
+        honeypot &&
+        honeypot.value.trim() !== ''
+    ) {
+
+        console.warn(
+            '[BB] Spam blocked: honeypot triggered'
+        );
+
         return true;
     }
 
-    // 2. Speed check: real humans take at least 3 seconds to fill the form
-    const tsEl = document.getElementById('bb-form-ts');
-    if (tsEl && tsEl.value) {
-        const elapsed = Date.now() - parseInt(tsEl.value, 10);
+    // Speed check
+    const tsEl =
+        document.getElementById(
+            'bb-form-ts'
+        );
+
+    if (
+        tsEl &&
+        tsEl.value
+    ) {
+
+        const elapsed =
+            Date.now() -
+            parseInt(
+                tsEl.value,
+                10
+            );
+
         if (elapsed < 3000) {
-            console.warn('[BB] Spam blocked: form submitted too fast (' + elapsed + 'ms)');
+
+            console.warn(
+                '[BB] Spam blocked: form submitted too fast'
+            );
+
             return true;
         }
     }
 
-    // 3. Rate limit: max 4 orders per day per device
-    const now = Date.now();
-    const oneDay = 24 * 60 * 60 * 1000;
-    const history = JSON.parse(localStorage.getItem('bb-order-times') || '[]')
-                        .filter(t => now - t < oneDay);
+    // Rate limit
+    const now =
+        Date.now();
+
+    const oneDay =
+        24 *
+        60 *
+        60 *
+        1000;
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                'bb-order-times'
+            ) || '[]'
+        )
+        .filter(
+            t =>
+                now - t <
+                oneDay
+        );
+
     if (history.length >= 4) {
-        const oldest = Math.min(...history);
-        const hoursLeft = Math.ceil((oldest + oneDay - now) / (60 * 60 * 1000));
-        showToast(`⚠️ Daily order limit reached. Try again in ${hoursLeft} hour${hoursLeft === 1 ? '' : 's'}.`);
-        console.warn('[BB] Spam blocked: daily rate limit exceeded');
+
+        const oldest =
+            Math.min(
+                ...history
+            );
+
+        const hoursLeft =
+            Math.ceil(
+                (
+                    oldest +
+                    oneDay -
+                    now
+                ) /
+                (
+                    60 *
+                    60 *
+                    1000
+                )
+            );
+
+        showToast(
+            `⚠️ Daily order limit reached. Try again in ${hoursLeft} hour${
+                hoursLeft === 1
+                    ? ''
+                    : 's'
+            }.`
+        );
+
         return true;
     }
 
     return false;
 }
 
+// ─── Record Order ──────────────────────────────────
 function recordOrder() {
-    const now = Date.now();
-    const oneDay = 24 * 60 * 60 * 1000;
-    const history = JSON.parse(localStorage.getItem('bb-order-times') || '[]')
-                        .filter(t => now - t < oneDay);
-    history.push(now);
-    localStorage.setItem('bb-order-times', JSON.stringify(history));
+
+    const now =
+        Date.now();
+
+    const oneDay =
+        24 *
+        60 *
+        60 *
+        1000;
+
+    const history =
+        JSON.parse(
+            localStorage.getItem(
+                'bb-order-times'
+            ) || '[]'
+        )
+        .filter(
+            t =>
+                now - t <
+                oneDay
+        );
+
+    history.push(
+        now
+    );
+
+    localStorage.setItem(
+        'bb-order-times',
+        JSON.stringify(history)
+    );
 }
 
+// ─── Place Order ───────────────────────────────────
 function placeOrder() {
-    // ── Anti-Spam Check ──
+
+    // Anti-spam
     if (isSpam()) {
-        showToast('⚠️ Order blocked. Please try again.');
+
+        showToast(
+            '⚠️ Order blocked. Please try again.'
+        );
+
         return;
     }
 
-    // Animate button
-    btnConfirm.textContent = '⏳ Placing Order…';
-    btnConfirm.disabled = true;
+    // Disable confirm button
+    if (btnConfirm) {
 
-    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const deliveryFee = 300;
-    const total = subtotal + deliveryFee;
+        btnConfirm.textContent =
+            '⏳ Placing Order…';
 
-    // Gather order data
+        btnConfirm.disabled =
+            true;
+    }
+
+    // Subtotal
+    const subtotal =
+        cart.reduce(
+            (
+                sum,
+                item
+            ) =>
+                sum +
+                item.price *
+                item.quantity,
+            0
+        );
+
+    // Sri Lanka delivery fee
+    const deliveryFee =
+        DELIVERY_FEE;
+
+    // Final total
+    const total =
+        subtotal +
+        deliveryFee;
+
+    // Customer information
+    const customerName =
+        document.getElementById(
+            'c-name'
+        ).value.trim();
+
+    const customerPhone =
+        document.getElementById(
+            'c-phone'
+        ).value.trim();
+
+    const customerAddress =
+        document.getElementById(
+            'c-address'
+        ).value.trim();
+
+    const customerArea =
+        document.getElementById(
+            'c-area'
+        ).value;
+
+    const customerNote =
+        document.getElementById(
+            'c-note'
+        )?.value.trim() || '';
+
+    // ─── Order Data ─────────────────────────────────
     const orderData = {
+
         customer: {
-            name: document.getElementById('c-name').value.trim(),
-            phone: document.getElementById('c-phone').value.trim(),
-            address: document.getElementById('c-address').value.trim(),
-            area: document.getElementById('c-area').value,
-            note: document.getElementById('c-note').value.trim()
+
+            name:
+                customerName,
+
+            phone:
+                customerPhone,
+
+            address:
+                customerAddress,
+
+            area:
+                customerArea,
+
+            district:
+                customerArea,
+
+            country:
+                DELIVERY_COUNTRY,
+
+            deliveryCountry:
+                DELIVERY_COUNTRY,
+
+            note:
+                customerNote
         },
-        items: cart.map(item => ({
-            id: item.id,
-            name: item.name,
-            price: item.price,
-            quantity: item.quantity,
-            selectedSize: item.selectedSize || null,
-            img: item.img || null
-        })),
-        deliveryFee: deliveryFee,
-        total: total,
-        paymentMethod: total > 10000 ? 'Advance' : 'COD',
-        status: 'pending',
-        createdAt: new Date().toISOString(),
-        orderNumber: 'BB-' + Date.now().toString(36).toUpperCase()
+
+        items:
+            cart.map(
+                item => ({
+
+                    id:
+                        item.id,
+
+                    name:
+                        item.name,
+
+                    price:
+                        item.price,
+
+                    quantity:
+                        item.quantity,
+
+                    selectedSize:
+                        item.selectedSize ||
+                        null,
+
+                    img:
+                        item.img ||
+                        null
+                })
+            ),
+
+        subtotal:
+            subtotal,
+
+        deliveryFee:
+            deliveryFee,
+
+        total:
+            total,
+
+        deliveryMethod:
+            'Sri Lanka-wide Delivery',
+
+        deliveryLocation:
+            customerArea,
+
+        paymentMethod:
+            total > 10000
+                ? 'Advance'
+                : 'COD',
+
+        status:
+            'pending',
+
+        createdAt:
+            new Date().toISOString(),
+
+        orderNumber:
+            'BB-' +
+            Date.now()
+                .toString(36)
+                .toUpperCase()
     };
 
-    // Save to Firebase Firestore
-    const saveOrder = (typeof db !== 'undefined')
-        ? db.collection('orders').add(orderData)
-        : Promise.resolve();
+    // ─── Save to Firebase ───────────────────────────
+    const saveOrder =
+        (
+            typeof db !==
+            'undefined'
+        )
+
+            ? db
+                .collection('orders')
+                .add(orderData)
+
+            : Promise.resolve();
 
     saveOrder
-        .then(() => {
-            recordOrder();
-            cart = [];
-            saveCart();
-            updateCart();
-            checkoutModal.classList.remove('active');
-            checkoutForm.reset();
-            goToStep(1);
-            btnConfirm.textContent = '✅ Confirm Order';
-            btnConfirm.disabled = false;
+        .then(
+            () => {
 
-            // Redirect to success page
-            window.location.href = 'order-success.html?method=' + orderData.paymentMethod;
-        })
-        .catch((err) => {
-            console.error('Error saving order:', err);
-            btnConfirm.textContent = '✅ Confirm Order';
-            btnConfirm.disabled = false;
-            showToast('⚠️ Order failed. Please try again.');
-        });
+                // Record successful order
+                recordOrder();
+
+                // Empty cart
+                cart = [];
+
+                saveCart();
+
+                updateCart();
+
+                // Close checkout
+                checkoutModal?.classList.remove(
+                    'active'
+                );
+
+                // Reset form
+                checkoutForm?.reset();
+
+                // Re-create district dropdown
+                setupSriLankaDeliveryAreas();
+
+                // Return to step 1
+                goToStep(1);
+
+                // Reset button
+                if (btnConfirm) {
+
+                    btnConfirm.textContent =
+                        '✅ Confirm Order';
+
+                    btnConfirm.disabled =
+                        false;
+                }
+
+                // Success page
+                window.location.href =
+                    'order-success.html?method=' +
+                    encodeURIComponent(
+                        orderData.paymentMethod
+                    );
+            }
+        )
+        .catch(
+            err => {
+
+                console.error(
+                    'Error saving order:',
+                    err
+                );
+
+                if (btnConfirm) {
+
+                    btnConfirm.textContent =
+                        '✅ Confirm Order';
+
+                    btnConfirm.disabled =
+                        false;
+                }
+
+                showToast(
+                    '⚠️ Order failed. Please try again.'
+                );
+            }
+        );
 }
 
-// ─── Toast ────────────────────────────────────────────
+// ─── Toast ──────────────────────────────────────────
 let toastTimeout;
+
 function showToast(msg) {
-    toastEl.textContent = msg;
-    toastEl.classList.add('show');
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => toastEl.classList.remove('show'), 3000);
+
+    if (!toastEl) {
+        return;
+    }
+
+    toastEl.textContent =
+        msg;
+
+    toastEl.classList.add(
+        'show'
+    );
+
+    clearTimeout(
+        toastTimeout
+    );
+
+    toastTimeout =
+        setTimeout(
+            () => {
+
+                toastEl.classList.remove(
+                    'show'
+                );
+
+            },
+            3000
+        );
 }
 
-// ─── Start ────────────────────────────────────────────
+// ─── Start Application ──────────────────────────────
 init();
